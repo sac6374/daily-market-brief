@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Brief — April 27, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Mono:wght@300;400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#111010;--paper:#f7f3ec;--paper-2:#ede8df;--rule:#d5cfc4;
+    --red:#b02020;--gold:#8a6710;--gold-bg:#faf4e4;
+    --green:#1a5432;--green-bg:#edf6f1;--muted:#7a7168;--muted-2:#a09585;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Source Serif 4',Georgia,serif;background:var(--paper);color:var(--ink);font-size:17px;line-height:1.78;-webkit-font-smoothing:antialiased}
+  .masthead{padding:36px 0 24px;text-align:center;border-bottom:2.5px solid var(--ink);border-top:4px solid var(--ink)}
+  .masthead-eyebrow{font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+  .masthead-title{font-family:'Playfair Display',Georgia,serif;font-size:clamp(44px,8vw,72px);font-weight:900;letter-spacing:-.025em;line-height:.95;margin-bottom:12px}
+  .masthead-rule{display:flex;align-items:center;justify-content:center;gap:14px}
+  .masthead-rule::before,.masthead-rule::after{content:'';display:block;height:1px;width:60px;background:var(--rule)}
+  .masthead-tagline{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-2)}
+  .alert-strip{background:var(--ink);color:var(--paper);padding:10px 20px;display:flex;align-items:center;justify-content:center;gap:10px;font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase}
+  .alert-pip{width:6px;height:6px;border-radius:50%;background:#e05050;flex-shrink:0;animation:blink 1.6s ease-in-out infinite}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+  .wrap{max-width:680px;margin:0 auto;padding:0 22px 72px}
+  .dateline{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--rule);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .ticker{display:grid;grid-template-columns:repeat(5,1fr);border-bottom:1px solid var(--rule)}
+  .ticker-cell{padding:12px 10px;border-right:1px solid var(--rule);text-align:center}
+  .ticker-cell:last-child{border-right:none}
+  .t-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+  .t-val{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:var(--ink);margin-bottom:2px}
+  .t-chg{font-family:'DM Mono',monospace;font-size:10px;font-weight:500}
+  .t-note{font-family:'DM Mono',monospace;font-size:7.5px;color:var(--muted-2);margin-top:2px}
+  .down{color:var(--red)}.up{color:var(--green)}
+  .toc{border:1px solid var(--rule);border-top:2px solid var(--ink);padding:16px 20px;margin-top:16px}
+  .toc-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+  .toc-list{list-style:none;padding:0;margin:0;columns:2;column-gap:24px}
+  @media(max-width:480px){.toc-list{columns:1}}
+  .toc-list li{padding:3px 0;break-inside:avoid}
+  .toc-list a{font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.04em;color:var(--ink);text-decoration:none;display:flex;align-items:baseline;gap:7px}
+  .toc-list a:hover .toc-title{color:var(--red);border-color:var(--red)}
+  .toc-num{color:var(--red);font-size:9px;flex-shrink:0;letter-spacing:.08em}
+  .toc-title{border-bottom:1px solid var(--rule);padding-bottom:1px}
+  .smart30{background:var(--ink);color:var(--paper);padding:20px 26px;margin-top:0}
+  .smart30-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#888;margin-bottom:10px}
+  .smart30 p{font-size:15.5px;line-height:1.75;color:#ede8df;margin-bottom:0}
+  .section{margin-top:40px;padding-top:20px;border-top:1px solid var(--rule)}
+  .section.first{border-top:2px solid var(--ink);margin-top:32px}
+  .section-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
+  .section-num{color:var(--red)}
+  h2{font-family:'Playfair Display',Georgia,serif;font-size:clamp(19px,3.2vw,24px);font-weight:700;line-height:1.22;letter-spacing:-.01em;color:var(--ink);margin-bottom:18px}
+  .dev-item{padding:0 0 18px 18px;border-left:2px solid var(--ink);margin-bottom:18px}
+  .dev-item:last-child{margin-bottom:0;padding-bottom:0}
+  .dev-category{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+  .dev-item p{font-size:15px;line-height:1.70}
+  p{font-size:16px;line-height:1.80;margin-bottom:14px;color:var(--ink)}
+  p:last-child{margin-bottom:0}
+  em{font-style:italic}strong{font-weight:600}
+  .aside{border-left:2px solid var(--rule);padding:3px 0 3px 16px;margin:18px 0;color:var(--muted);font-size:14px;line-height:1.70;font-style:italic}
+  .chain{background:var(--paper-2);border-top:2px solid var(--ink);border-bottom:1px solid var(--rule);padding:20px 24px;margin:18px 0}
+  .chain-row{display:grid;grid-template-columns:68px 1fr;gap:14px;padding:10px 0;border-bottom:1px solid var(--rule);align-items:start}
+  .chain-row:first-child{padding-top:0}.chain-row:last-child{padding-bottom:0;border-bottom:none}
+  .chain-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding-top:2px;line-height:1.5}
+  .chain-text{font-family:'DM Mono',monospace;font-size:11.5px;line-height:1.85;color:var(--ink)}
+  .arr{color:var(--red);margin:0 3px}
+  .arr-g{color:var(--green);margin:0 3px}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:4px}
+  @media(max-width:540px){.grid-2{grid-template-columns:1fr}}
+  .grid-card{border:1px solid var(--rule);border-top:2.5px solid var(--ink);padding:16px 16px 18px;background:var(--paper)}
+  .card-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+  .grid-card p{font-size:13px;line-height:1.66;margin-bottom:0}
+  .watch{background:var(--gold-bg);border:1px solid #dfc98a;border-left:2.5px solid var(--gold);padding:15px 18px;margin-top:12px}
+  .watch-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:7px}
+  .watch p{font-size:13px;line-height:1.66;margin-bottom:0;color:#5a3f00}
+  .sector-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px}
+  @media(max-width:520px){.sector-grid{grid-template-columns:1fr}}
+  .sector-card{border:1px solid var(--rule);padding:13px 15px;background:var(--paper)}
+  .sector-card.winning{border-top:2.5px solid var(--green)}
+  .sector-card.losing{border-top:2.5px solid var(--red)}
+  .sector-card.mixed{border-top:2.5px solid var(--gold)}
+  .sector-name{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:5px;display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+  .sector-badge{font-size:8px;padding:1px 5px;border-radius:2px;font-weight:500}
+  .badge-win{background:var(--green-bg);color:var(--green)}
+  .badge-lose{background:#fdf2f2;color:var(--red)}
+  .badge-watch{background:var(--gold-bg);color:var(--gold)}
+  .sector-card p{font-size:12.5px;line-height:1.63;margin-bottom:0}
+  .career-universal{background:var(--paper-2);border-top:2px solid var(--ink);border-bottom:1px solid var(--rule);padding:14px 18px;margin-bottom:14px}
+  .career-universal-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+  .career-universal p{font-size:13.5px;line-height:1.68;margin-bottom:0;font-style:italic;color:var(--ink)}
+  .career-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .career-grid .career-card:last-child:nth-child(odd){grid-column:1 / -1}
+  @media(max-width:520px){.career-grid{grid-template-columns:1fr}}
+  .career-card{border:1px solid var(--rule);padding:13px 15px 15px;background:var(--paper)}
+  .career-path{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+  .career-card p{font-size:12.5px;line-height:1.63;margin-bottom:0}
+  .interview-box{border:1px solid var(--rule);border-left:2.5px solid var(--ink);padding:16px 20px;margin-top:6px}
+  .interview-box ul{list-style:none;padding:0;margin:0}
+  .interview-box li{font-size:14px;line-height:1.68;padding:7px 0 7px 16px;border-bottom:1px solid var(--rule);position:relative}
+  .interview-box li::before{content:'→';position:absolute;left:0;color:var(--red);font-family:'DM Mono',monospace;font-size:10px;top:10px}
+  .interview-box li:last-child{border-bottom:none}
+  .term{border:1px solid var(--rule);padding:20px 24px 22px;margin-top:6px}
+  .term-word{font-family:'Playfair Display',Georgia,serif;font-size:20px;font-weight:700;font-style:italic;color:var(--red);margin-bottom:9px}
+  .term p{font-size:14.5px;margin-bottom:0}
+  .say{background:var(--green-bg);border:1px solid #b2d9c3;border-left:2.5px solid var(--green);padding:18px 22px 20px;margin-top:6px}
+  .say-context{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--green);display:block;margin-bottom:6px}
+  .say p{font-size:14.5px;line-height:1.76;color:#0e3324;font-style:italic;margin-bottom:0}
+  .sources{margin-top:36px;padding-top:14px;border-top:1px solid var(--rule);font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.04em;color:var(--muted);line-height:1.8}
+  .sources strong{font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;font-size:8.5px}
+  .footer{margin-top:24px;padding-top:16px;border-top:2px solid var(--ink);text-align:center;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);line-height:1.9}
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="masthead-eyebrow">Daily Market Intelligence</div>
+  <div class="masthead-title">The Brief</div>
+  <div class="masthead-rule"><span class="masthead-tagline">Finance students &amp; early-career professionals</span></div>
+</div>
+
+<div class="alert-strip">
+  <div class="alert-pip"></div>
+  Iran floats Hormuz deal · Brent above $100 · Mag-7 earnings this week · Fed meets Wednesday
+</div>
+
+<div class="wrap">
+  <div class="dateline">
+    <span>Monday, April 27, 2026</span>
+    <span>5-minute read</span>
+  </div>
+
+  <div class="ticker">
+    <div class="ticker-cell">
+      <div class="t-label">S&amp;P 500</div>
+      <div class="t-val">7,173.91</div>
+      <div class="t-chg up">+0.12% rec.</div>
+      <div class="t-note">5th record in week</div>
+    </div>
+    <div class="ticker-cell">
+      <div class="t-label">Nasdaq</div>
+      <div class="t-val">24,887.10</div>
+      <div class="t-chg up">+0.20% rec.</div>
+      <div class="t-note">all-time high</div>
+    </div>
+    <div class="ticker-cell">
+      <div class="t-label">Brent Crude</div>
+      <div class="t-val">$108.23</div>
+      <div class="t-chg down">+2.75%</div>
+      <div class="t-note">Goldman ↑ forecast</div>
+    </div>
+    <div class="ticker-cell">
+      <div class="t-label">WTI</div>
+      <div class="t-val">$96.37</div>
+      <div class="t-chg down">+2.09%</div>
+      <div class="t-note">talks stalled</div>
+    </div>
+    <div class="ticker-cell">
+      <div class="t-label">10-Yr Yield</div>
+      <div class="t-val">4.32%</div>
+      <div class="t-chg down">+1bp</div>
+      <div class="t-note">Fed meets Wed</div>
+    </div>
+  </div>
+
+  <!-- TOC -->
+  <nav class="toc">
+    <div class="toc-label">In this edition</div>
+    <ul class="toc-list">
+      <li><a href="#smart30"><span class="toc-num">00</span><span class="toc-title">Smart in 30 Seconds</span></a></li>
+      <li><a href="#s01"><span class="toc-num">01</span><span class="toc-title">What Moved Markets Today</span></a></li>
+      <li><a href="#s02"><span class="toc-num">02</span><span class="toc-title">Why It Mattered</span></a></li>
+      <li><a href="#s03"><span class="toc-num">03</span><span class="toc-title">The Chain Reaction</span></a></li>
+      <li><a href="#s04"><span class="toc-num">04</span><span class="toc-title">What It Means</span></a></li>
+      <li><a href="#s05"><span class="toc-num">05</span><span class="toc-title">Market Sector Lens</span></a></li>
+      <li><a href="#s06"><span class="toc-num">06</span><span class="toc-title">Finance Career Lens</span></a></li>
+      <li><a href="#s07"><span class="toc-num">07</span><span class="toc-title">Why This Matters for Interviews</span></a></li>
+      <li><a href="#s08"><span class="toc-num">08</span><span class="toc-title">Term of the Day</span></a></li>
+      <li><a href="#s09"><span class="toc-num">09</span><span class="toc-title">Say This Today</span></a></li>
+    </ul>
+  </nav>
+
+  <!-- SMART IN 30 -->
+  <div class="smart30" id="smart30">
+    <div class="smart30-label">Smart in 30 Seconds</div>
+    <p>Iran offered the U.S. a new proposal — reopen the Strait of Hormuz and end the war, but defer nuclear talks to a later stage. The White House confirmed receipt. Markets shrugged: stocks edged to fresh records while oil climbed anyway, because the nuclear program is a U.S. red line and traffic through Hormuz remains essentially zero. Meanwhile, Goldman Sachs raised its Brent oil forecast to $90/barrel for Q4 — nearly $30 above its pre-war estimate — citing record inventory draws. This week is one of the busiest in years: five Magnificent Seven companies report earnings, the Fed meets Wednesday, and the Bank of Japan and ECB also decide this week. The S&P 500 has now hit record highs five sessions in a row. The next catalyst is not diplomacy — it's earnings.</p>
+  </div>
+
+
+  <!-- 01 -->
+  <div class="section first" id="s01">
+    <div class="section-label"><span class="section-num">01 —</span> What Moved Markets Today</div>
+    <h2>Iran blinked — sort of. Markets shrugged — mostly. Earnings week begins.</h2>
+
+    <div class="dev-item">
+      <div class="dev-category">Geopolitics — Iran's New Hormuz Proposal</div>
+      <p>Axios reported Monday morning, citing a U.S. official and two sources familiar with the matter, that Iran has offered to reopen the Strait of Hormuz and end the Gulf conflict, provided the U.S. agrees to defer nuclear negotiations to a later stage. White House press secretary Karoline Leavitt confirmed Trump and his national security team reviewed the proposal. The catch: Iran's nuclear program remains a firm U.S. red line, and Trump canceled the planned Islamabad trip for Vance, Witkoff, and Kushner on Saturday, citing "tremendous infighting and confusion" within Tehran's leadership. Iran's Parliament Speaker Ghalibaf said the Hormuz reopening is "impossible" as long as the U.S. blockade continues. Ship traffic through the strait remained near zero Monday, per Bloomberg. Oil rose despite the diplomatic signal — Brent crossed $100 to $108.23, WTI settled at $96.37 — because the proposal is seen as preliminary and the nuclear question is unresolved.</p>
+    </div>
+
+    <div class="dev-item">
+      <div class="dev-category">Goldman Sachs Revises Oil Forecast — Record Inventory Draws</div>
+      <p>In an April 27 note, Goldman Sachs raised its Q4 2026 Brent forecast to $90 per barrel from $80 previously — nearly $30 above its pre-war estimate. Analyst Daan Struyven cited "extreme" global inventory draws, estimating that 14.5 million barrels per day of Persian Gulf crude production losses are drawing global inventories at a record pace of 11–12 million barrels per day in April. Goldman noted that Gulf exports are not expected to normalize until end-June at the earliest, and warned that "even sharper demand losses could be required if the supply shock persists longer." Source: Bloomberg and CNBC, citing Goldman's April 27 note.</p>
+    </div>
+
+    <div class="dev-item">
+      <div class="dev-category">The Biggest Earnings Week of the Year — Five Magnificent Seven Names Report</div>
+      <p>Alphabet, Meta, Microsoft, and Amazon all report Wednesday after close. Apple reports Thursday. Together, these five companies represent roughly 25% of the S&P 500's market cap. As of Friday, 84% of S&P 500 companies that have reported beat earnings expectations — historically strong — and annual S&P 500 earnings growth is now tracking at 15.1%, per FactSet. The question this week is whether the Magnificent Seven's AI-driven growth narratives hold up under elevated oil costs, higher yields, and a forward P/E for the index approaching 21. Dan Ives of Wedbush said he expects "more good news on the horizon" — but the bar is high after each stock is up 10%+ this month alone.</p>
+    </div>
+  </div>
+
+
+  <!-- 02 -->
+  <div class="section" id="s02">
+    <div class="section-label"><span class="section-num">02 —</span> Why It Mattered</div>
+    <h2>A deal offer that doesn't resolve the core issue. An oil forecast that explains why.</h2>
+
+    <p>Iran's Hormuz proposal is being treated as a positive directional signal — the country is acknowledging the economic cost of the closure and looking for an exit. But deferring nuclear talks is not the same as offering a deal on nuclear weapons, and the Trump administration has consistently held that nuclear enrichment is non-negotiable. The market's reaction — stocks slightly higher, oil also higher — tells you what traders actually believe: the proposal is real but doesn't change the near-term supply picture. Hormuz stays closed until something concrete happens, and nothing concrete happened today.</p>
+
+    <p>Goldman's oil forecast revision is the more analytically important development. When the world's most prominent commodities research desk raises a quarterly price forecast by nearly $30 in a single note and describes inventory draws as "record" and "not sustainable," it's issuing a formal warning that the economic damage from this disruption is compounding — not easing. The revision also matters because it forces every analyst, portfolio manager, and corporate treasurer who follows Goldman to revisit their models. Inflation projections, earnings estimates for energy-intensive sectors, and Fed rate-cut timelines all move when Goldman moves oil.</p>
+
+    <p>The earnings week context is the critical overlay. The S&P 500 is at a record. Forward P/E is near 21. Rally breadth has narrowed — only 53% of S&P 500 stocks now trade above their 50-day moving average, down from 60% last week. What that means is the index is being carried by a smaller number of very large companies. If Alphabet, Meta, Microsoft, or Amazon disappoint — on revenue, guidance, or AI capex commentary — the selloff would be concentrated and fast. There is no cushion in the price.</p>
+
+    <div class="aside">Microsoft announced Monday it is ending its exclusive partnership with OpenAI and terminating a revenue-sharing agreement. The stock dipped at the open. The read-through is significant for AI infrastructure investors: Microsoft's move signals it no longer needs OpenAI exclusivity to win in enterprise AI — it has its own models, Azure, and Copilot. That's actually a sign of strategic confidence, not weakness, but it creates uncertainty around OpenAI's valuation path.</div>
+  </div>
+
+
+  <!-- 03 -->
+  <div class="section" id="s03">
+    <div class="section-label"><span class="section-num">03 —</span> The Chain Reaction</div>
+    <h2>Follow the logic.</h2>
+
+    <div class="chain">
+      <div class="chain-row">
+        <div class="chain-label">Iran<br>Proposal</div>
+        <div class="chain-text">Iran offers Hormuz reopening if nuclear talks deferred <span class="arr">→</span> U.S. says nuclear is non-negotiable <span class="arr">→</span> no deal yet, Hormuz stays closed <span class="arr">→</span> oil rises (+2%) despite diplomacy signal <span class="arr">→</span> stocks reach record anyway on earnings optimism <span class="arr">→</span> VIX holds below 20 · market pricing a deal eventually, not today</div>
+      </div>
+      <div class="chain-row">
+        <div class="chain-label">Goldman<br>Oil Call</div>
+        <div class="chain-text">GS raises Brent Q4 to $90 from $80 <span class="arr">→</span> record 11–12M bpd inventory draws in April <span class="arr">→</span> Gulf supply not normalizing until late June <span class="arr">→</span> inflation forecast revisions ripple across Wall Street <span class="arr">→</span> Fed rate cut probability stays low · energy sector re-rates higher</div>
+      </div>
+      <div class="chain-row">
+        <div class="chain-label">Mag-7<br>Earnings</div>
+        <div class="chain-text">Alphabet, Meta, Microsoft, Amazon Wednesday AH · Apple Thursday <span class="arr">→</span> 25% of S&amp;P 500 market cap reporting in 48 hours <span class="arr">→</span> forward P/E near 21, rally breadth narrowing <span class="arr">→</span> beats validate premium · misses or cautious guidance compress multiples fast <span class="arr">→</span> AI capex commentary is the single most watched variable</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 04 -->
+  <div class="section" id="s04">
+    <div class="section-label"><span class="section-num">04 —</span> What It Means</div>
+    <h2>Breaking it down.</h2>
+
+    <div class="grid-2">
+      <div class="grid-card">
+        <div class="card-label">Rates &amp; Treasury Yields</div>
+        <p>10-year yield at 4.32%, up 1bp. The Fed meets Tuesday-Wednesday and is widely expected to hold rates unchanged — it's likely Powell's last meeting as chair. Markets now price only a 40% probability of any rate cut in 2026, down from 50% before Warsh's hearing last week. Goldman's oil revision makes rate cuts even harder to justify: sustained $90–100+ Brent means the inflation fight isn't over, regardless of how the nuclear talks end.</p>
+      </div>
+      <div class="grid-card">
+        <div class="card-label">Stocks &amp; Indexes</div>
+        <p>S&P 500 and Nasdaq both hit record closes Monday. But breadth is narrowing and the RSI for the S&P 500 is near 70 — technically overbought territory. The rally is now almost entirely dependent on the Magnificent Seven delivering earnings that justify current valuations. Domino's −10% on an earnings miss today is a reminder that elevated oil costs and soft consumer spending are real pressures outside of mega-cap tech.</p>
+      </div>
+      <div class="grid-card">
+        <div class="card-label">Broader Economy</div>
+        <p>The Hormuz closure is starting to spread beyond oil. Invesco flagged disruptions extending to helium, aluminum, and sulfur. Domino's miss cited higher living costs and cautious consumer spending as drivers — the first clear consumer stress signal from a discretionary name this earnings season. Goldman's inventory draw estimate (11–12M bpd) is an extraordinary figure that, if sustained, implies supply shortfalls reaching consumers in the form of higher prices across many categories, not just gasoline.</p>
+      </div>
+      <div class="grid-card">
+        <div class="card-label">What to Watch</div>
+        <p>Wednesday is again the fulcrum: four Magnificent Seven reports after close plus the Fed decision and Powell press conference. Any guidance cut or AI capex concern from Alphabet, Meta, Microsoft, or Amazon would land the same day as the Fed's statement — compressing two major risk events into one session. Also watch for any White House response to Iran's Hormuz proposal, which the national security team is reviewing.</p>
+      </div>
+    </div>
+
+    <div class="watch">
+      <div class="watch-label">Goldman's warning in plain English</div>
+      <p>Goldman estimates global oil inventories are drawing down at 11–12 million barrels per day in April — a rate they describe as "not sustainable." That means either demand has to fall sharply (recession signal), or supply needs to be restored (Hormuz reopens), or prices rise further to ration demand. All three outcomes carry significant market implications. Their base case — Gulf exports normalize by end of June — would still leave inventories depleted and prices elevated through Q3.</p>
+    </div>
+  </div>
+
+
+  <!-- 05 -->
+  <div class="section" id="s05">
+    <div class="section-label"><span class="section-num">05 —</span> Market Sector Lens</div>
+    <h2>Who's moving and why.</h2>
+
+    <div class="sector-grid">
+      <div class="sector-card winning">
+        <div class="sector-name">Semiconductors <span class="sector-badge badge-win">Historic Run</span></div>
+        <p>Chip stocks' RSI is above 80 — technically the most overbought part of the market. TSMC surged 6% in Asian trading Monday after a record quarter. Micron (+4%) and Sandisk (+7%) led U.S. gains. The AI infrastructure buildout is the dominant narrative. The risk: elevated RSI means a single disappointment in Alphabet or Microsoft's AI cloud commentary this week could trigger a fast pullback in the whole group.</p>
+      </div>
+      <div class="sector-card winning">
+        <div class="sector-name">Energy <span class="sector-badge badge-win">Goldman Upgrade</span></div>
+        <p>Brent at $108, WTI at $96, and Goldman raising Q4 forecasts to $90 Brent makes energy the clearest fundamental winner in the market right now. The sector is benefiting from both the physical supply shock and now an institutional endorsement that prices stay elevated through at least Q3. Chevron and Exxon report Friday — their capital allocation guidance on an extended $90+ oil environment will be closely watched.</p>
+      </div>
+      <div class="sector-card losing">
+        <div class="sector-name">Consumer Discretionary <span class="sector-badge badge-lose">Stress Showing</span></div>
+        <p>Domino's Pizza fell 10% after reporting same-store sales growth of 0.9% vs. 2.7% expected and cutting its full-year outlook, citing higher living costs and cautious consumer spending. It's the clearest consumer stress signal yet this earnings season. Airlines, which were the biggest winners when oil briefly dropped to $82, are quietly struggling again with Brent back above $100.</p>
+      </div>
+      <div class="sector-card mixed">
+        <div class="sector-name">Mega-cap Tech <span class="sector-badge badge-watch">Earnings This Week</span></div>
+        <p>Apple, Meta, Microsoft, Amazon, and Alphabet are all up 10%+ this month — a massive setup heading into earnings. Every one of those companies faces the same question: is AI capex generating enough revenue to justify the spend? Investors are also watching Microsoft's OpenAI split closely — the end of exclusivity is read as confidence, but any AI deal uncertainty could weigh on sentiment across the group before Wednesday's close.</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 06 -->
+  <div class="section" id="s06">
+    <div class="section-label"><span class="section-num">06 —</span> Finance Career Lens</div>
+    <h2>What people in finance are actually thinking about today.</h2>
+
+    <div class="career-universal">
+      <div class="career-universal-label">For everyone in finance</div>
+      <p>This week is the intersection of everything: the biggest earnings week of the year, a Fed decision, three central bank meetings globally, Goldman raising its oil forecast, and an unresolved Hormuz situation that's now spreading beyond crude. The ability to hold all of that simultaneously — and know which variable matters most at each moment — is what separates someone who follows markets from someone who understands them. This week, the answer is Wednesday: four Mag-7 earnings plus the Fed, in a single session.</p>
+    </div>
+
+    <div class="career-grid">
+      <div class="career-card">
+        <div class="career-path">Wealth Management</div>
+        <p>The most pressing client conversation this week is about concentration risk. The Magnificent Seven are up 10%+ this month alone, and they now represent roughly 25% of the S&P 500. Clients with index-heavy portfolios are more exposed to this week's earnings than they may realize. The WM framing is not "should we sell before earnings" — it's "do you understand what you actually own and why your portfolio moves the way it does?" Helping a client understand index concentration is one of the most practical and differentiating conversations in wealth management right now.</p>
+      </div>
+      <div class="career-card">
+        <div class="career-path">Investment Banking</div>
+        <p>Two developments today are directly relevant to deal activity. First, Iran's Hormuz proposal — even if preliminary — is the first concrete signal that economic pressure is creating a path toward reopening. That changes the forward deal environment: if oil normalizes by summer, corporate confidence returns and M&A pipelines reopen. Second, Microsoft ending its OpenAI exclusivity is a corporate strategy event that will generate advisory and restructuring work. Any time a multi-billion-dollar partnership restructures, bankers get called. Know the read-through: it signals Microsoft is confident enough in its own AI capabilities that it no longer needs OpenAI's exclusivity as a competitive moat.</p>
+      </div>
+      <div class="career-card">
+        <div class="career-path">Sales &amp; Trading</div>
+        <p>This is the highest-volatility week on the calendar. Five Magnificent Seven earnings after Wednesday's close, a Fed decision, and Brent above $100 all simultaneously. Options markets are pricing wide implied moves across Alphabet, Meta, Microsoft, and Amazon — each stock carrying a 6–9% implied swing. For S&T interviews: know what "implied move" means and how it's calculated from options premiums. Also know why Goldman's oil forecast revision matters for commodity desks — a $90 Q4 Brent target changes every refining margin model, every airline hedge book, and every energy producer's capital allocation plan.</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 07 -->
+  <div class="section" id="s07">
+    <div class="section-label"><span class="section-num">07 —</span> Why This Matters for Interviews This Week</div>
+    <h2>What to actually use in a conversation.</h2>
+
+    <div class="interview-box">
+      <ul>
+        <li><strong>Goldman raising oil forecasts is a concrete, citable data point.</strong> When an analyst asks "what do you think about the energy market," the answer "Goldman raised its Q4 Brent target to $90, nearly $30 above pre-war levels, citing record 11–12M bpd inventory draws" is specific, sourced, and shows you're reading primary research — not just headlines.</li>
+        <li><strong>The Magnificent Seven earnings setup tests your valuation awareness.</strong> Five companies representing 25% of the S&P 500 are reporting in two days, with the index at a forward P/E near 21 and individual stocks up 10%+ this month. Any interviewer in equity research, AM, or PE will probe whether you understand what "priced for perfection" means and what happens if one of them misses guidance.</li>
+        <li><strong>The Fed meeting Wednesday is likely Powell's last.</strong> It's expected to hold rates unchanged — but the language matters, and any interviewer interested in macro or fixed income will ask about the Warsh transition and what a new Fed chair means for the rate path. Know the steeper-curve argument: lower short rates, higher long rates.</li>
+        <li><strong>Microsoft ending OpenAI exclusivity is an M&A and strategy story.</strong> It signals the end of one of the most consequential tech partnerships of the decade. For IB or PE interviews, be ready to articulate why partnership restructurings like this create advisory work, how exclusivity agreements affect valuations, and what it means for OpenAI's standalone fundraising path.</li>
+      </ul>
+    </div>
+  </div>
+
+
+  <!-- 08 -->
+  <div class="section" id="s08">
+    <div class="section-label"><span class="section-num">08 —</span> Term of the Day</div>
+    <div class="term">
+      <div class="term-word">Market Breadth</div>
+      <p>A measure of how many stocks are participating in a market move, as opposed to just a handful of large ones. When market breadth is wide, most stocks are rising — which signals healthy, broad-based investor confidence. When breadth narrows, the index keeps climbing but only because a small number of very large companies are pulling it up, while most stocks are flat or falling. Today, only 53% of S&P 500 stocks trade above their 50-day moving average — down from 60% last week. The index is at a record. But if you look beneath the surface, the rally is increasingly being carried by the Magnificent Seven. Narrow breadth doesn't mean the market will fall — but it does mean a miss from one of those companies lands harder, because there's no broad base to absorb the shock.</p>
+    </div>
+  </div>
+
+
+  <!-- 09 -->
+  <div class="section" id="s09">
+    <div class="section-label"><span class="section-num">09 —</span> Say This Today</div>
+    <div class="say">
+      <span class="say-context">For an interview, coffee chat, or networking call</span>
+      <p>"Iran offered a new proposal to reopen Hormuz today, but markets barely moved — stocks edged to records while oil climbed anyway. That tells you what the market actually thinks: the proposal is real but it doesn't resolve the nuclear question, which is the U.S. red line. Meanwhile, Goldman raised its Q4 Brent forecast to $90, citing record inventory draws that they describe as 'not sustainable.' This week is really about earnings — five Magnificent Seven companies report Wednesday, and with the S&P near 21 times forward earnings and rally breadth narrowing, there's very little room for a miss. The market has priced in a strong quarter from each of them, which means the risk is more to the downside than the upside on any individual print."</p>
+    </div>
+  </div>
+
+
+  <div class="sources">
+    <strong>Sources</strong><br>
+    Yahoo Finance / TheStreet (S&amp;P 500, Nasdaq, Dow, WTI, Brent confirmed closes; Domino's, Verizon, Micron moves) · Axios (Iran Hormuz proposal, nuclear deferral offer, White House confirmation) · CNBC / Bloomberg (Goldman Sachs April 27 oil note — Daan Struyven quote, Brent forecast revision, inventory draw estimate; Iran Ghalibaf quote; Microsoft-OpenAI partnership end; Leavitt White House confirmation) · Schwab Market Update / Motley Fool (S&amp;P RSI, breadth stats, earnings season summary) · FactSet Earnings Insight (84% beat rate, 15.1% earnings growth estimate) · Global X ETFs — Billy Leung quote via CNBC · Invesco — Benjamin Jones note via CNBC · Wedbush — Dan Ives note via Yahoo Finance
+  </div>
+
+  <div class="footer">
+    The Brief &nbsp;·&nbsp; Daily Market Intelligence · April 27, 2026<br>
+    Not investment advice &nbsp;·&nbsp; For educational purposes only
+  </div>
+</div>
+</body>
+</html>
