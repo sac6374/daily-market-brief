@@ -1,246 +1,409 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Brief — Wednesday, July 16, 2025</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Mono:wght@300;400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
-<style>
-  :root{--ink:#111010;--paper:#f7f3ec;--paper-2:#ede8df;--rule:#d5cfc4;--red:#b02020;--gold:#8a6710;--gold-bg:#faf4e4;--green:#1a5432;--green-bg:#edf6f1;--muted:#7a7168;--muted-2:#a09585}
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:'Source Serif 4',Georgia,serif;background:var(--paper);color:var(--ink);font-size:17px;line-height:1.78;-webkit-font-smoothing:antialiased}
-  .masthead{padding:36px 0 24px;text-align:center;border-bottom:2.5px solid var(--ink);border-top:4px solid var(--ink)}
-  .masthead-eyebrow{font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
-  .masthead-title{font-family:'Playfair Display',Georgia,serif;font-size:clamp(44px,8vw,72px);font-weight:900;letter-spacing:-.025em;line-height:.95;margin-bottom:12px}
-  .masthead-rule{display:flex;align-items:center;justify-content:center;gap:14px}
-  .masthead-rule::before,.masthead-rule::after{content:'';display:block;height:1px;width:60px;background:var(--rule)}
-  .masthead-tagline{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-2)}
-  .alert-strip{background:var(--ink);color:var(--paper);padding:10px 20px;display:flex;align-items:center;justify-content:center;gap:10px;font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase}
-  .alert-pip{width:6px;height:6px;border-radius:50%;background:#e05050;flex-shrink:0;animation:blink 1.6s ease-in-out infinite}
-  @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
-  .wrap{max-width:680px;margin:0 auto;padding:0 22px 72px}
-  .dateline{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--rule);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-  .ticker{display:grid;grid-template-columns:repeat(5,1fr);border-bottom:1px solid var(--rule)}
-  .ticker-cell{padding:12px 10px;border-right:1px solid var(--rule);text-align:center}
-  .ticker-cell:last-child{border-right:none}
-  .t-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
-  .t-val{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:var(--ink);margin-bottom:2px}
-  .t-chg{font-family:'DM Mono',monospace;font-size:10px;font-weight:500}
-  .t-note{font-family:'DM Mono',monospace;font-size:7.5px;color:var(--muted-2);margin-top:2px}
-  .down{color:var(--red)}.up{color:var(--green)}
-  .toc{border:1px solid var(--rule);border-top:2px solid var(--ink);padding:16px 20px;margin-top:16px}
-  .toc-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
-  .toc-list{list-style:none;padding:0;margin:0;columns:2;column-gap:24px}
-  @media(max-width:480px){.toc-list{columns:1}}
-  .toc-list li{padding:3px 0;break-inside:avoid}
-  .toc-list a{font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.04em;color:var(--ink);text-decoration:none;display:flex;align-items:baseline;gap:7px}
-  .toc-list a:hover .toc-title{color:var(--red);border-color:var(--red)}
-  .toc-num{color:var(--red);font-size:9px;flex-shrink:0;letter-spacing:.08em}
-  .toc-title{border-bottom:1px solid var(--rule);padding-bottom:1px}
-  .smart30{background:var(--ink);color:var(--paper);padding:20px 26px}
-  .smart30-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#888;margin-bottom:10px}
-  .smart30 p{font-size:15.5px;line-height:1.75;color:#ede8df;margin-bottom:0}
-  .section{margin-top:40px;padding-top:20px;border-top:1px solid var(--rule)}
-  .section.first{border-top:2px solid var(--ink);margin-top:32px}
-  .section-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
-  .section-num{color:var(--red)}
-  h2{font-family:'Playfair Display',Georgia,serif;font-size:clamp(19px,3.2vw,24px);font-weight:700;line-height:1.22;letter-spacing:-.01em;color:var(--ink);margin-bottom:18px}
-  .dev-item{padding:0 0 18px 18px;border-left:2px solid var(--ink);margin-bottom:18px}
-  .dev-item:last-child{margin-bottom:0;padding-bottom:0}
-  .dev-category{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
-  .dev-item p{font-size:15px;line-height:1.70}
-  p{font-size:16px;line-height:1.80;margin-bottom:14px;color:var(--ink)}
-  p:last-child{margin-bottom:0}
-  em{font-style:italic}strong{font-weight:600}
-  .aside{border-left:2px solid var(--rule);padding:3px 0 3px 16px;margin:18px 0;color:var(--muted);font-size:14px;line-height:1.70;font-style:italic}
-  .chain{background:var(--paper-2);border-top:2px solid var(--ink);border-bottom:1px solid var(--rule);padding:20px 24px;margin:18px 0}
-  .chain-row{display:grid;grid-template-columns:68px 1fr;gap:14px;padding:10px 0;border-bottom:1px solid var(--rule);align-items:start}
-  .chain-row:first-child{padding-top:0}.chain-row:last-child{padding-bottom:0;border-bottom:none}
-  .chain-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding-top:2px;line-height:1.5}
-  .chain-text{font-family:'DM Mono',monospace;font-size:11.5px;line-height:1.85;color:var(--ink)}
-  .arr{color:var(--red);margin:0 3px}
-  .arr-g{color:var(--green);margin:0 3px}
-  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:4px}
-  @media(max-width:540px){.grid-2{grid-template-columns:1fr}}
-  .grid-card{border:1px solid var(--rule);border-top:2.5px solid var(--ink);padding:16px 16px 18px;background:var(--paper)}
-  .card-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
-  .grid-card p{font-size:13px;line-height:1.66;margin-bottom:0}
-  .watch{background:var(--gold-bg);border:1px solid #dfc98a;border-left:2.5px solid var(--gold);padding:15px 18px;margin-top:12px}
-  .watch-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:7px}
-  .watch p{font-size:13px;line-height:1.66;margin-bottom:0;color:#5a3f00}
-  .sector-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px}
-  @media(max-width:520px){.sector-grid{grid-template-columns:1fr}}
-  .sector-card{border:1px solid var(--rule);padding:13px 15px;background:var(--paper)}
-  .sector-card.winning{border-top:2.5px solid var(--green)}.sector-card.losing{border-top:2.5px solid var(--red)}.sector-card.mixed{border-top:2.5px solid var(--gold)}
-  .sector-name{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:5px;display:flex;align-items:center;gap:5px;flex-wrap:wrap}
-  .sector-badge{font-size:8px;padding:1px 5px;border-radius:2px;font-weight:500}
-  .badge-win{background:var(--green-bg);color:var(--green)}.badge-lose{background:#fdf2f2;color:var(--red)}.badge-watch{background:var(--gold-bg);color:var(--gold)}
-  .sector-card p{font-size:12.5px;line-height:1.63;margin-bottom:0}
-  .career-universal{background:var(--paper-2);border-top:2px solid var(--ink);border-bottom:1px solid var(--rule);padding:14px 18px;margin-bottom:14px}
-  .career-universal-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
-  .career-universal p{font-size:13.5px;line-height:1.68;margin-bottom:0;font-style:italic;color:var(--ink)}
-  .career-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-  .career-grid .career-card:last-child:nth-child(odd){grid-column:1 / -1}
-  @media(max-width:520px){.career-grid{grid-template-columns:1fr}}
-  .career-card{border:1px solid var(--rule);padding:13px 15px 15px;background:var(--paper)}
-  .career-path{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
-  .career-card p{font-size:12.5px;line-height:1.63;margin-bottom:0}
-  .interview-box{border:1px solid var(--rule);border-left:2.5px solid var(--ink);padding:16px 20px;margin-top:6px}
-  .interview-box ul{list-style:none;padding:0;margin:0}
-  .interview-box li{font-size:14px;line-height:1.68;padding:7px 0 7px 16px;border-bottom:1px solid var(--rule);position:relative}
-  .interview-box li::before{content:'→';position:absolute;left:0;color:var(--red);font-family:'DM Mono',monospace;font-size:10px;top:10px}
-  .interview-box li:last-child{border-bottom:none}
-  .term{border:1px solid var(--rule);padding:20px 24px 22px;margin-top:6px}
-  .term-word{font-family:'Playfair Display',Georgia,serif;font-size:20px;font-weight:700;font-style:italic;color:var(--red);margin-bottom:9px}
-  .term p{font-size:14.5px;margin-bottom:0}
-  .say{background:var(--green-bg);border:1px solid #b2d9c3;border-left:2.5px solid var(--green);padding:18px 22px 20px;margin-top:6px}
-  .say-context{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--green);display:block;margin-bottom:6px}
-  .say p{font-size:14.5px;line-height:1.76;color:#0e3324;font-style:italic;margin-bottom:0}
-  .sources{margin-top:36px;padding-top:14px;border-top:1px solid var(--rule);font-family:'DM Mono',monospace;font-size:9.5px;color:var(--muted);line-height:1.8}
-  .sources strong{font-weight:500;text-transform:uppercase;letter-spacing:.1em;font-size:8.5px}
-  .footer{margin-top:24px;padding-top:16px;border-top:2px solid var(--ink);text-align:center;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);line-height:1.9}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Brief</title>
 </head>
 <body>
+  <div>Last updated: 4/29/2026, 6:50:40 PM ET</div>
+  <pre>Now I have enough information to write a thorough, well-cited brief. Let me compile it.
 
-<div class="masthead">
-  <div class="masthead-eyebrow">Daily Market Intelligence</div>
-  <div class="masthead-title">The Brief</div>
-  <div class="masthead-rule"><span class="masthead-tagline">Finance students &amp; early-career professionals</span></div>
-</div>
+```html
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot; /&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;/&gt;
+  &lt;title&gt;Market Brief — April 29, 2026&lt;/title&gt;
+  &lt;style&gt;
+    body {
+      font-family: &#39;Georgia&#39;, serif;
+      background-color: #f9f7f4;
+      color: #1a1a1a;
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 32px 20px 60px;
+      line-height: 1.7;
+    }
+    h1 {
+      font-size: 1.65rem;
+      font-weight: bold;
+      margin-bottom: 2px;
+      color: #111;
+    }
+    .dateline {
+      font-size: 0.85rem;
+      color: #777;
+      margin-bottom: 28px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-family: &#39;Helvetica Neue&#39;, sans-serif;
+    }
+    h2 {
+      font-size: 1.1rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: #b5451b;
+      margin-top: 42px;
+      margin-bottom: 6px;
+      font-family: &#39;Helvetica Neue&#39;, sans-serif;
+      border-top: 1px solid #e0dad2;
+      padding-top: 20px;
+    }
+    h3 {
+      font-size: 1rem;
+      font-weight: bold;
+      margin-top: 20px;
+      margin-bottom: 4px;
+      color: #1a1a1a;
+      font-family: &#39;Helvetica Neue&#39;, sans-serif;
+    }
+    p {
+      margin: 8px 0 14px;
+      font-size: 0.97rem;
+    }
+    ul {
+      padding-left: 20px;
+      margin: 6px 0 14px;
+    }
+    li {
+      margin-bottom: 7px;
+      font-size: 0.97rem;
+    }
+    .toc {
+      background: #f0ece5;
+      border-left: 4px solid #b5451b;
+      padding: 16px 22px;
+      border-radius: 4px;
+      margin-bottom: 32px;
+    }
+    .toc p {
+      font-family: &#39;Helvetica Neue&#39;, sans-serif;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #888;
+      margin: 0 0 8px;
+      font-weight: bold;
+    }
+    .toc ol {
+      margin: 0;
+      padding-left: 20px;
+    }
+    .toc li {
+      font-size: 0.92rem;
+      margin-bottom: 4px;
+      font-family: &#39;Helvetica Neue&#39;, sans-serif;
+    }
+    .toc a {
+      color: #b5451b;
+      text-decoration: none;
+    }
+    .toc a:hover {
+      text-decoration: underline;
+    }
+    .card {
+      background: #fff;
+      border: 1px solid #e5dfd7;
+      border-radius: 6px;
+      padding: 14px 18px;
+      margin: 10px 0 16px;
+    }
+    .card-label {
+      font-family: &#39;Helvetica Neue&#39;, sans-serif;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: #999;
+      margin-bottom: 4px;
+      font-weight: bold;
+    }
+    .snapshot-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 12px 0 18px;
+    }
+    .snap-item {
+      background: #fff;
+      border: 1px solid #e5dfd7;
+      border-radius: 5px;
+      padding: 10px 14px;
+    }
+    .snap-item .label {
+      font-family: &#39;Helvetica Neue&#39;, sans-serif;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #999;
+    }
+    .snap-item .value {
+      font-size: 1.05rem;
+      font-weight: bold;
+      color: #111;
+      margin-top: 2px;
+    }
+    .snap-item .change {
+      font-size: 0.82rem;
+      margin-top: 1px;
+      font-family: &#39;Helvetica Neue&#39;, sans-serif;
+    }
+    .up { color: #2a7a2a; }
+    .down { color: #c0392b; }
+    .tag {
+      display: inline-block;
+      background: #f0ece5;
+      color: #777;
+      font-family: &#39;Helvetica Neue&#39;, sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 20px;
+      margin-right: 5px;
+      margin-bottom: 8px;
+    }
+    .say-this {
+      background: #1a1a1a;
+      color: #f9f7f4;
+      border-radius: 6px;
+      padding: 18px 22px;
+      margin: 10px 0 16px;
+      font-style: italic;
+      font-size: 0.97rem;
+      line-height: 1.65;
+    }
+    .term-box {
+      background: #fff;
+      border-left: 4px solid #1a1a1a;
+      padding: 14px 20px;
+      border-radius: 4px;
+      margin: 10px 0 16px;
+    }
+    .term-box .term-word {
+      font-weight: bold;
+      font-size: 1.05rem;
+      margin-bottom: 4px;
+    }
+    .update-banner {
+      background: #fff7e6;
+      border-left: 4px solid #e67e22;
+      padding: 14px 20px;
+      border-radius: 4px;
+      margin: 10px 0 16px;
+    }
+    .divider {
+      border: none;
+      border-top: 1px solid #e5dfd7;
+      margin: 10px 0 0;
+    }
+    @media (max-width: 520px) {
+      .snapshot-grid { grid-template-columns: 1fr 1fr; }
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
 
-<div class="alert-strip">
-  <div class="alert-pip"></div>
-  FED BEIGE BOOK SIGNALS UNEVEN GROWTH ● GOLDMAN SACHS BEATS Q2 ESTIMATES ON STRONG TRADING ● OIL SLIDES ON DEMAND CONCERNS ● 10-YEAR TREASURY YIELD HOLDS NEAR 4.28% ● DOLLAR INDEX DXY EDGES LOWER ● CHINA GDP BEATS BUT MARKETS REMAIN CAUTIOUS
-</div>
+  &lt;h1&gt;The Daily Market Brief&lt;/h1&gt;
+  &lt;div class=&quot;dateline&quot;&gt;Wednesday, April 29, 2026 &amp;nbsp;|&amp;nbsp; Evening Edition&lt;/div&gt;
 
-<div class="wrap">
-  <div class="dateline">
-    <span>Wednesday, July 16, 2025</span>
-    <span>5-minute read</span>
-  </div>
+  &lt;!-- TABLE OF CONTENTS --&gt;
+  &lt;div class=&quot;toc&quot;&gt;
+    &lt;p&gt;Contents&lt;/p&gt;
+    &lt;ol&gt;
+      &lt;li&gt;&lt;a href=&quot;#s1&quot;&gt;Smart in 30 Seconds&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#s2&quot;&gt;What Moved Markets Today&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#s3&quot;&gt;Why It Mattered&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#s4&quot;&gt;The Chain Reaction&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#s5&quot;&gt;What It Means&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#s6&quot;&gt;Market Sector Lens&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#s7&quot;&gt;Finance Career Lens&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#s8&quot;&gt;Why This Matters for Interviews This Week&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#s9&quot;&gt;Term of the Day&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#s10&quot;&gt;Say This Today&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#s11&quot;&gt;What Changed Since This Morning&lt;/a&gt;&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/div&gt;
 
-  <div class="ticker">
-    <div class="ticker-cell">
-      <div class="t-label">S&amp;P 500</div>
-      <div class="t-val">~7,120</div>
-      <div class="t-chg down">−0.75%</div>
-      <div class="t-note">off record high</div>
-    </div>
-    <div class="ticker-cell">
-      <div class="t-label">Nasdaq</div>
-      <div class="t-val">~24,558</div>
-      <div class="t-chg down">−1.32%</div>
-      <div class="t-note">AI names hit</div>
-    </div>
-    <div class="ticker-cell">
-      <div class="t-label">WTI Crude</div>
-      <div class="t-val">~$99.92</div>
-      <div class="t-chg down">+3.68%</div>
-      <div class="t-note">back near $100</div>
-    </div>
-    <div class="ticker-cell">
-      <div class="t-label">Brent</div>
-      <div class="t-val">~$111.50</div>
-      <div class="t-chg down">+3.1%</div>
-      <div class="t-note">Iran skepticism</div>
-    </div>
-    <div class="ticker-cell">
-      <div class="t-label">VIX</div>
-      <div class="t-val">18.57</div>
-      <div class="t-chg down">+3.05%</div>
-      <div class="t-note">fear ticking up</div>
-    </div>
-  </div>
+  &lt;!-- ===================== SECTION 1 ===================== --&gt;
+  &lt;h2 id=&quot;s1&quot;&gt;1. Smart in 30 Seconds&lt;/h2&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;strong&gt;Fed holds again.&lt;/strong&gt; Rates stay at 3.5%–3.75% for the third straight meeting — but the vote was a dramatic 8–4, the most dissents since October 1992.&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Powell is done as Chair, but not leaving.&lt;/strong&gt; His chairmanship ends May 15. He announced he&#39;ll stay on the Board of Governors to protect Fed independence.&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Four Mag 7 giants reported after the close.&lt;/strong&gt; Microsoft crushed expectations; Meta got hit on ballooning capex. Alphabet climbed on solid sales. Results are shaping Thursday&#39;s open.&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Oil keeps climbing.&lt;/strong&gt; Brent hit its highest level since 2022 as Trump confirmed the Iran blockade will be extended — indefinitely.&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Rate cuts are now a 2027 story.&lt;/strong&gt; Money markets have nearly priced out any cut in 2026 and are starting to price in a possible hike in 2027.&lt;/li&gt;
+  &lt;/ul&gt;
 
-  <nav class="toc">
-    <div class="toc-label">In this edition</div>
-    <ul class="toc-list">
-      <li><a href="#smart30"><span class="toc-num">00</span><span class="toc-title">Smart in 30 Seconds</span></a></li>
-      <li><a href="#s01"><span class="toc-num">01</span><span class="toc-title">What Moved Markets Today</span></a></li>
-      <li><a href="#s02"><span class="toc-num">02</span><span class="toc-title">Why It Mattered</span></a></li>
-      <li><a href="#s03"><span class="toc-num">03</span><span class="toc-title">The Chain Reaction</span></a></li>
-      <li><a href="#s04"><span class="toc-num">04</span><span class="toc-title">What It Means</span></a></li>
-      <li><a href="#s05"><span class="toc-num">05</span><span class="toc-title">Market Sector Lens</span></a></li>
-      <li><a href="#s06"><span class="toc-num">06</span><span class="toc-title">Finance Career Lens</span></a></li>
-      <li><a href="#s07"><span class="toc-num">07</span><span class="toc-title">Why This Matters for Interviews</span></a></li>
-      <li><a href="#s08"><span class="toc-num">08</span><span class="toc-title">Term of the Day</span></a></li>
-      <li><a href="#s09"><span class="toc-num">09</span><span class="toc-title">Say This Today</span></a></li>
-    </ul>
-  </nav>
+  &lt;!-- ===================== SECTION 2 ===================== --&gt;
+  &lt;h2 id=&quot;s2&quot;&gt;2. What Moved Markets Today&lt;/h2&gt;
 
-  <div class="smart30" id="smart30">
-    <div class="smart30-label">Smart in 30 Seconds</div>
-    <p>The Federal Reserve's Beige Book painted a mixed picture of the U.S. economy, noting modest growth in most districts but persistent uncertainty tied to tariff policy and softening consumer spending. Goldman Sachs delivered a strong Q2 earnings beat driven by its FICC and equities trading desks, reinforcing the theme that Wall Street trading houses are benefiting from market volatility. Oil prices slipped as demand forecasts from the IEA were revised lower. Meanwhile, China reported Q2 GDP growth of 5.2%, slightly above expectations, but equity markets responded cautiously amid ongoing trade tensions and skepticism about sustainability. The 10-year Treasury yield stabilized near 4.28% as investors weighed rate cut timing, with the market now pricing roughly one to two cuts by year-end.</p>
-  </div>
+  &lt;div class=&quot;snapshot-grid&quot;&gt;
+    &lt;div class=&quot;snap-item&quot;&gt;
+      &lt;div class=&quot;label&quot;&gt;S&amp;amp;P 500&lt;/div&gt;
+      &lt;div class=&quot;value&quot;&gt;7,135.95&lt;/div&gt;
+      &lt;div class=&quot;change down&quot;&gt;▼ 0.04%&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;snap-item&quot;&gt;
+      &lt;div class=&quot;label&quot;&gt;Dow Jones&lt;/div&gt;
+      &lt;div class=&quot;value&quot;&gt;48,861.81&lt;/div&gt;
+      &lt;div class=&quot;change down&quot;&gt;▼ 0.57% — 5th straight down day&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;snap-item&quot;&gt;
+      &lt;div class=&quot;label&quot;&gt;Nasdaq&lt;/div&gt;
+      &lt;div class=&quot;value&quot;&gt;24,673.24&lt;/div&gt;
+      &lt;div class=&quot;change up&quot;&gt;▲ 0.04%&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;snap-item&quot;&gt;
+      &lt;div class=&quot;label&quot;&gt;10-Yr Treasury&lt;/div&gt;
+      &lt;div class=&quot;value&quot;&gt;4.41%&lt;/div&gt;
+      &lt;div class=&quot;change down&quot;&gt;▲ ~5 bps — one-month high&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;snap-item&quot;&gt;
+      &lt;div class=&quot;label&quot;&gt;2-Yr Treasury&lt;/div&gt;
+      &lt;div class=&quot;value&quot;&gt;3.937%&lt;/div&gt;
+      &lt;div class=&quot;change down&quot;&gt;▲ 9.3 bps — two-year high&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;snap-item&quot;&gt;
+      &lt;div class=&quot;label&quot;&gt;Brent Crude&lt;/div&gt;
+      &lt;div class=&quot;value&quot;&gt;~$116–117&lt;/div&gt;
+      &lt;div class=&quot;change down&quot;&gt;▲ ~5% — highest since 2022&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
 
-  <div class="section first" id="s01">
-    <div class="section-label"><span class="section-num">01 —</span> What Moved Markets Today</div>
-    <h2>What Moved Markets Today</h2>
-    <div class="grid-2"><div class="dev-item"><div class="dev-category">EARNINGS</div><p><strong>Goldman Sachs Q2 Beat:</strong> Goldman reported EPS of $10.22 versus the $9.08 consensus estimate, a 12.5% beat. Net revenues rose 15% year-over-year to $14.6B, powered by FICC trading (+21% YoY) and equities (+18% YoY). Investment banking fees also recovered, up 26% YoY as the M&A pipeline showed signs of reopening.</p></div><div class="dev-item"><div class="dev-category">MACRO</div><p><strong>Fed Beige Book Released:</strong> The Fed's anecdotal survey of economic conditions across 12 districts described growth as 'modest to moderate' in most regions, with several districts flagging tariff-driven input cost increases and cautious business hiring. Consumer spending showed signs of fatigue, particularly in discretionary categories.</p></div><div class="dev-item"><div class="dev-category">COMMODITIES</div><p><strong>Oil Slides:</strong> WTI crude fell roughly 1.4% to near $80.10/barrel after the International Energy Agency trimmed its 2025 global oil demand growth forecast to 740,000 barrels per day, citing weaker industrial activity in Europe and slower-than-expected Chinese consumption recovery.</p></div><div class="dev-item"><div class="dev-category">MACRO — CHINA</div><p><strong>China GDP Beats:</strong> China's National Bureau of Statistics reported Q2 GDP growth of 5.2% year-over-year, above the 5.0% consensus. However, retail sales and industrial output data were mixed, and analysts warned that front-loaded export activity ahead of potential tariff escalations may be flattering the headline number.</p></div></div>
-  </div>
+  &lt;p&gt;&lt;strong&gt;Top movers:&lt;/strong&gt;&lt;/p&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;strong&gt;NXP Semiconductors (NXPI) +26%&lt;/strong&gt; — Best single-day gain since its 2010 IPO on a strong Q1 beat.&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Seagate Technology (STX) +17%&lt;/strong&gt; — Strong Q3 results.&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Starbucks (SBUX) +8.4%&lt;/strong&gt; — CEO declared the turnaround has hit an &quot;inflection point.&quot;&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Visa (V) +10%&lt;/strong&gt; — Beat estimates; CEO cited resilient consumer spending.&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Robinhood (HOOD) −10%&lt;/strong&gt; — Missed Q1 expectations; crypto trading fees down 47%.&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;SoFi (SOFI) −13%&lt;/strong&gt; — Beat revenue but flat 2026 full-year guidance disappointed.&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Meta (META) −6% after hours&lt;/strong&gt; — Raised 2026 capex to $125B–$145B; user growth slowed.&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Microsoft (MSFT) — after hours beat&lt;/strong&gt; — Azure +40%, earnings and revenue above consensus.&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Alphabet (GOOGL) — after hours climb&lt;/strong&gt; — Solid ad sales and cloud growth.&lt;/li&gt;
+  &lt;/ul&gt;
 
-  <div class="section" id="s02">
-    <div class="section-label"><span class="section-num">02 —</span> Why It Mattered</div>
-    <h2>Why It Mattered</h2>
-    <p>Today's session was a convergence of three major market drivers — corporate earnings, central bank communication, and commodity demand signals — all arriving simultaneously and pulling in different directions. Understanding how these interact is exactly the kind of analytical thinking interviewers and buy-side desks look for.</p><p><strong>Goldman's print matters beyond Goldman.</strong> When the largest trading-focused bank on Wall Street posts a blowout quarter driven by FICC and equities desks, it signals that market volatility — while uncomfortable for long-only investors — is a direct revenue driver for broker-dealers. It also opens questions about whether investment banking is durably recovering or just bouncing off a trough. A 26% jump in IB fees, if sustained, would signal that CFOs and boards are regaining confidence to pursue M&A and capital raises.</p><p><strong>The Beige Book is a real-time economic temperature check.</strong> Unlike hard data releases, which are backward-looking by weeks or months, the Beige Book aggregates conversations between Fed district banks and local businesses right now. Language around 'tariff uncertainty' appearing in multiple districts signals that trade policy is having a measurable chilling effect on business investment — a key concern for the Fed as it calibrates rate decisions.</p><p><strong>The IEA demand cut matters for inflation and rate expectations.</strong> Lower oil demand growth means less upward pressure on energy prices, which feeds directly into CPI calculations. A softer oil complex gives the Fed more flexibility to cut rates without reigniting inflation — a dynamic that bond markets are watching closely.</p>
-  </div>
+  &lt;!-- ===================== SECTION 3 ===================== --&gt;
+  &lt;h2 id=&quot;s3&quot;&gt;3. Why It Mattered&lt;/h2&gt;
 
-  <div class="section" id="s03">
-    <div class="section-label"><span class="section-num">03 —</span> The Chain Reaction</div>
-    <h2>The Chain Reaction</h2>
-    <div class="chain"><p>🏦 <strong>Goldman Sachs beats on trading revenues</strong> → Signals broad market volatility is monetizable for dealer banks → Raises earnings forecasts for Morgan Stanley (reporting Thursday) and other broker-dealers → Financial sector ETFs (XLF) receive support</p><p>📋 <strong>Beige Book flags tariff uncertainty and soft consumer spending</strong> → Reinforces expectations for Fed caution → Reduces probability of rate hike but doesn't accelerate cut timeline → 10-year yield stays range-bound near 4.28%</p><p>🛢️ <strong>IEA cuts oil demand forecast</strong> → WTI falls ~1.4% → Energy sector (XLE) underperforms → Lower oil prices reduce fuel cost pressures for airlines, trucking, and industrials → Could support margins in transport-heavy sectors</p><p>🇨🇳 <strong>China Q2 GDP beats 5.2%</strong> → Copper and iron ore prices receive modest support → Emerging market currencies briefly strengthen vs. dollar → Skepticism about front-loaded exports tempers enthusiasm → No major risk-on rally materializes</p><p>💵 <strong>DXY edges lower on mixed U.S. data signals</strong> → Mild tailwind for U.S. multinationals with large international revenue bases → Gold holds near $2,430/oz as dollar softens slightly</p></div>
-  </div>
+  &lt;p&gt;Today was arguably the most consequential single day of the year for financial markets. Three major forces converged at once: the Fed&#39;s final meeting under Powell, four simultaneous Mag 7 earnings reports, and a geopolitical oil shock with no clear end date.&lt;/p&gt;
 
-  <div class="section" id="s04">
-    <div class="section-label"><span class="section-num">04 —</span> What It Means</div>
-    <h2>What It Means</h2>
-    <div class="grid-2"><div class="dev-item"><div class="dev-category">FOR THE FED</div><p>The Beige Book doesn't directly drive policy, but it shapes the qualitative narrative. With multiple districts citing tariff-driven cost pressures alongside weakening consumer demand, the Fed faces a 'stagflation-lite' dilemma — inflation risk from supply-side shocks and growth risk from demand softening. This makes a September cut less certain than markets had priced even two weeks ago.</p></div><div class="dev-item"><div class="dev-category">FOR EQUITY MARKETS</div><p>Goldman's beat raises the earnings bar for the rest of big bank reporting season. If JPMorgan, Morgan Stanley, and Bank of America also deliver strong trading numbers, the financial sector could see meaningful multiple expansion. However, credit quality trends and net interest margin compression remain watch items for the commercial banking side.</p></div><div class="dev-item"><div class="dev-category">FOR CREDIT MARKETS</div><p>Tighter financial conditions from persistent 4%+ long-end yields continue to pressure leveraged borrowers. Investment-grade spreads remain contained, but high-yield spreads have widened modestly in recent weeks, signaling that credit markets are more cautious than equities about the macro outlook.</p></div><div class="dev-item"><div class="dev-category">FOR COMMODITIES</div><p>Oil's slide is a double-edged sword. Lower energy costs help consumers and margin-sensitive industrials but signal real demand concerns. The divergence between China's strong GDP print and weak commodity demand signals is a red flag — it suggests the growth quality may not be commodity-intensive, pointing to a more services-and-export-driven recovery.</p></div></div>
-  </div>
+  &lt;p&gt;&lt;strong&gt;The Fed wasn&#39;t boring.&lt;/strong&gt; 
 
-  <div class="section" id="s05">
-    <div class="section-label"><span class="section-num">05 —</span> Market Sector Lens</div>
-    <h2>Market Sector Lens</h2>
-    <div class="sector-grid"><div class="dev-item"><div class="dev-category">FINANCIALS — OUTPERFORM</div><p>Goldman's beat and anticipated Morgan Stanley print create positive momentum. Trading desks benefit from volatility. Watch credit card delinquency trends as a risk offset.</p></div><div class="dev-item"><div class="dev-category">ENERGY — UNDERPERFORM</div><p>IEA demand cut and WTI weakness pressure E&P names. Integrated majors (Exxon, Chevron) more insulated via refining margins, but pure-play upstream names face headwinds.</p></div><div class="dev-item"><div class="dev-category">INDUSTRIALS — NEUTRAL</div><p>Beige Book caution on business investment tempers outlook. Aerospace and defense remain structurally supported by government contracts. Tariff-exposed manufacturers are risk.</p></div><div class="dev-item"><div class="dev-category">TECH — NEUTRAL/WATCH</div><p>Earnings season begins in earnest next week. AI capex cycle remains the dominant narrative. Any softening in cloud hyperscaler guidance could reprice the sector meaningfully.</p></div><div class="dev-item"><div class="dev-category">CONSUMER DISCRETIONARY — CAUTIOUS</div><p>Beige Book's consumer spending fatigue signal aligns with soft retail sales data from prior weeks. Private-label trade-down trend continues. Watch Walmart and Target guidance for read-through.</p></div><div class="dev-item"><div class="dev-category">FIXED INCOME — RANGE-BOUND</div><p>10-year at 4.28% reflects the Fed's 'higher for longer but not forever' posture. Duration risk is asymmetric — more upside for bonds if growth disappoints than downside if inflation re-accelerates modestly.</p></div></div>
-  </div>
+The Federal Reserve left interest rates steady in what was almost certainly Jerome Powell&#39;s final meeting as its leader, but there were the most internal dissents at a Fed meeting in 34 years.
 
-  <div class="section" id="s06">
-    <div class="section-label"><span class="section-num">06 —</span> Finance Career Lens</div>
-    <h2>Finance Career Lens</h2>
-    <div class="career-grid"><div class="dev-item"><div class="dev-category">INVESTMENT BANKING</div><p>Goldman's 26% IB fee recovery is the headline students should know. In interviews, connect this to the M&A cycle: as rates stabilize and equity valuations recover, sponsor-backed deal activity and strategic M&A both tend to reactivate. Be ready to discuss where we are in the deal cycle and what catalysts could accelerate or stall it.</p></div><div class="dev-item"><div class="dev-category">SALES & TRADING</div><p>FICC and equities trading revenues at Goldman were the standout. If you're recruiting for S&T roles, understand that volatility — in rates, FX, or equities — is the operating environment that allows market-makers to earn wider spreads. Know what FICC stands for (Fixed Income, Currencies, and Commodities) and be able to explain the revenue model.</p></div><div class="dev-item"><div class="dev-category">ASSET MANAGEMENT / BUY SIDE</div><p>Today's mixed signals — strong bank earnings, cautious macro data, falling oil — are exactly the kind of environment where portfolio managers must make active allocation decisions. For interviews, practice framing a view: 'Given X and Y, I would overweight Z because...' using today's data as your setup.</p></div><div class="dev-item"><div class="dev-category">EQUITY RESEARCH</div><p>Research analysts would be updating their Goldman models today — revising revenue estimates, adjusting EPS forecasts, and potentially updating price targets. Know how to talk about a comp table and a DCF sensitized to revenue growth assumptions. The Goldman beat gives you a live model update example.</p></div></div>
-  </div>
+ The hold itself was fully expected — 
 
-  <div class="section" id="s07">
-    <div class="section-label"><span class="section-num">07 —</span> Why This Matters for Interviews This Week</div>
-    <h2>Why This Matters for Interviews This Week</h2>
-    <div class="interview-box"><ul><li><strong>"Walk me through what happened in markets this week."</strong> — Lead with Goldman's Q2 beat and the FICC/equities trading strength. Tie it to market volatility as a revenue driver. Mention the Beige Book's caution on consumer and business conditions. Show you understand the macro backdrop, not just the headlines.</li><li><strong>"Where do you think the Fed goes from here?"</strong> — Use the Beige Book and CPI context. Acknowledge the dual tension: tariff-driven cost pressures versus slowing consumer demand. Note that markets are pricing roughly one to two cuts by year-end but the path is highly data-dependent. Demonstrate nuance — avoid saying 'they'll definitely cut in September.'</li><li><strong>"What's your view on Goldman Sachs as an investment?"</strong> — Highlight the trading revenue beat and IB recovery. Counterbalance with questions about ROE sustainability, M&A cycle timing risk, and how rising credit costs could pressure the broader financial sector. Show you can hold a balanced thesis.</li><li><strong>"How does the IEA demand forecast affect an energy company's valuation?"</strong> — Connect lower demand expectations to reduced oil price assumptions in DCF models. A $5/barrel reduction in your long-term oil price assumption can have an outsized impact on NPV for E&P companies due to the operating leverage embedded in their cost structures.</li><li><strong>"What does the China GDP number mean for global markets?"</strong> — Show you can separate headline from substance. The 5.2% beat sounds positive, but weak commodity imports and potentially front-loaded exports suggest quality concerns. For global investors, this matters for EM allocations and industrial commodity exposure.</li></ul></div>
-  </div>
+the FOMC voted to hold the benchmark funds rate in a range between 3.5% and 3.75%, and markets had been pricing in a 100% chance of no change.
 
-  <div class="section" id="s08">
-    <div class="section-label"><span class="section-num">08 —</span> Term of the Day</div>
-    <div class="term">
-      <div class="term-word">FICC</div>
-      <p><p><strong>FICC</strong> stands for <strong>Fixed Income, Currencies, and Commodities</strong> — one of the two major trading divisions at large investment banks, alongside Equities. FICC desks make markets in government and corporate bonds, interest rate derivatives, foreign exchange, and commodity products. Revenue in this division is closely tied to market volatility and bid-ask spreads: when volatility is high, market-makers can earn wider spreads and clients trade more actively to hedge exposures. Goldman Sachs, JPMorgan, and Citigroup consistently rank among the top FICC franchises globally. In interviews, being able to explain FICC revenue drivers — volatility, client flow, spread compression in low-vol environments — signals genuine market awareness.</p></p>
-    </div>
-  </div>
+ What nobody expected was the split. 
 
-  <div class="section" id="s09">
-    <div class="section-label"><span class="section-num">09 —</span> Say This Today</div>
-    <div class="say">
-      <span class="say-context">For an interview, coffee chat, or networking call</span>
-      <p><p><strong>Use this in a networking call or interview:</strong></p><p><em>"Goldman's Q2 results were really instructive — the FICC beat shows that elevated rate and macro volatility, while challenging for long-only managers, is actually a tailwind for dealer banks. What I found interesting was that IB fees were also up 26% year-over-year, which suggests the M&A pipeline is starting to reopen. I'm watching whether Morgan Stanley confirms that trend when they report Thursday."</em></p><p>This answer demonstrates that you understand cross-divisional bank dynamics, can connect earnings data to macro context, and are forward-looking enough to know what's coming next in the earnings calendar — exactly what a senior banker or analyst wants to hear from a candidate.</p></p>
-    </div>
-  </div>
+Three reserve bank presidents — Beth Hammack (Cleveland), Neel Kashkari (Minneapolis), and Lorie Logan (Dallas) — dissented not against the rate decision, but because they &quot;did not support inclusion of an easing bias in the statement at this time.&quot;
 
-  <div class="sources">
-    <strong>Sources</strong><br>
-    <p><strong>Sources:</strong> Goldman Sachs Q2 2025 Earnings Release and Investor Presentation; Federal Reserve Beige Book, July 2025; International Energy Agency Oil Market Report, July 2025; National Bureau of Statistics of China Q2 2025 GDP Release; U.S. Treasury market data via Bloomberg; CME FedWatch Tool for rate expectations; SPDR Sector ETF performance data (XLF, XLE); Wall Street Journal Markets Desk; Financial Times Banking & Markets coverage.</p>
-  </div>
+ A fourth dissenter, 
 
-  <div class="footer">
-    The Brief &nbsp;·&nbsp; Daily Market Intelligence · Wednesday, July 16, 2025<br>
-    Not investment advice &nbsp;·&nbsp; For educational purposes only
-  </div>
-</div>
+Fed Governor Stephen Miran, called for a quarter percentage point cut.
+
+ Hawks and doves pulling in opposite directions simultaneously — that&#39;s a genuinely unusual signal.&lt;/p&gt;
+
+  &lt;p&gt;&lt;strong&gt;Powell isn&#39;t going anywhere yet.&lt;/strong&gt; 
+
+Federal Reserve Chair Jerome Powell said he will stay on the Board of Governors for an indefinite period while a probe into the renovation of the central bank&#39;s headquarters continues.
+
+ 
+
+By remaining as a governor, he can continue to influence the board as a member — and he also denies Trump an opening to appoint another member to the board.
+
+&lt;/p&gt;
+
+  &lt;p&gt;&lt;strong&gt;Oil is the macro pressure point.&lt;/strong&gt; 
+
+Oil prices rose for another day after the Wall Street Journal, citing U.S. officials, reported that President Trump has told aides to prepare for an extended blockade of Iran. Prices then took another leg higher after Axios reported that Trump rejected Iran&#39;s proposal to reopen the Strait of Hormuz.
+
+ 
+
+Brent prices are nearing their wartime peak of just above $119 a barrel and remain far above the roughly $70 level seen before the conflict began.
+
+&lt;/p&gt;
+
+  &lt;!-- ===================== SECTION 4 ===================== --&gt;
+  &lt;h2 id=&quot;s4&quot;&gt;4. The Chain Reaction&lt;/h2&gt;
+
+  &lt;p&gt;Here&#39;s how the pieces connect:&lt;/p&gt;
+
+  &lt;p&gt;&lt;strong&gt;Iran blockade → oil spike → inflation pressure → Fed can&#39;t cut.&lt;/strong&gt; 
+
+The ongoing conflict between the U.S., Israel, and Iran has caused oil prices to spike to their highest level in four years and gas prices to soar above $4.00 per gallon, putting a quick halt to the decelerating inflation trend seen in recent years.
+
+ 
+
+Core inflation is running at 3.2% — &quot;moving, albeit just a little bit, in the wrong direction&quot; — and there&#39;s still uncertain headline inflation coming out of the Gulf, as Powell himself noted.
+
+&lt;/p&gt;
+
+  &lt;p&gt;&lt;strong&gt;Fed stays on hold → yields rise → pressure on rate-sensitive assets.&lt;/strong&gt; 
+
+The 10-year U.S. Treasury yield jumped after the Fed&#39;s decision, climbing more than 5 basis points to 4.41%.
+
+ 
+
+The 2-year Treasury surged 9.3 basis points to 3.937%, its highest point in two years.
+
+ Rising short-end yields reflect markets repricing the timeline for cuts much further out.&lt;/p&gt;
+
+  &lt;p&gt;&lt;strong&gt;Rate cut hopes collapse → money markets reprice.&lt;/strong&gt; 
+
+With no end in sight to the Middle East conflict, money markets all but abandoned wagers on a rate cut this year and began pricing in the chances of a hike in 2027.
+
+ This is a significant shift from just a few months ago.&lt;/p&gt;
+
+  &lt;p&gt;&lt;strong&gt;Mag 7 earnings → mixed picture on AI spending payoff.&lt;/strong&gt; The four hyperscalers collectively committed to what could be 
+
+roughly $600 billion in AI capex in 2026.
+
+ 
+
+Microsoft reported better-than-expected results and raised its full-year capex forecast to $190 billion, with earnings per share of $4.27 adjusted vs. $4.06 expected and revenue of $82.89 billion vs. $81.39 billion expected.
+
+ 
+
+Azure revenue surged 40%
+
+ — accelerating past guidance. Meanwhile, 
+
+Meta tumbled more than 6% in extended trading after raising its capex plans to $125B–$145B; the Facebook parent reported user growth fell from Q4, blaming the war in Iran and WhatsApp restrictions in Russia.
+
+&lt;/p&gt;
+
+  &lt;!-- ===================== SECTION 5 ===================== --&gt;
+  &lt;h2 id=&quot;s5&quot;&gt;5. What It Means&lt;/h2&gt;
+
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;div class=&quot;card-label&quot;&gt;Confirmed&lt;/div&gt;
+    &lt;p style=&quot;margin:0;&quot;&gt;The Fed is on hold — for at least several more meetings. Three hawkish dissenters want to drop the easing bias entirely, suggesting the next policy shift could be a hike before a cut if oil and inflation remain elevated. Rate cuts in 2026 are no longer the base case.&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;div class=&quot;card-label&quot;&gt;Confirmed&lt;/div&gt;
+    &lt;p style=&quot;margin:0;&quot;&gt;Powell will remain on the Fed Board post-May 15. This matters: 
+
+the addition of Kevin Warsh to the FOMC will not swing the balance between doves and hawks, as Warsh will take Stephen Miran&#39;s seat given Powell&#39;s seat will not be open for the time being.
+
+&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;div class=&quot;card-label&quot;&gt;Confirmed&lt;/div&gt;
+    &lt;p style=&quot;margin:0;&quot;&gt;
+
+The surprising dissents show that Kevin Warsh, whose confirmation to lead the Fed is pending in the Senate, will face significant internal resistance to delivering the interest rate cuts that President Trump desires.
+
+&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;card&quot;&gt;</pre>
 </body>
 </html>
