@@ -42,16 +42,15 @@ body{font-family:'Source Serif 4',Georgia,serif;background:var(--paper);color:va
 .section-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
 .section-num{color:var(--red)}
 h2{font-family:'Playfair Display',Georgia,serif;font-size:clamp(19px,3.2vw,24px);font-weight:700;line-height:1.22;letter-spacing:-.01em;color:var(--ink);margin-bottom:18px}
-.dev-grid,.career-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.dev-grid,.career-grid,.sector-grid,.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .dev-card,.career-card,.sector-card,.grid-card{border:1px solid var(--rule);border-top:2.5px solid var(--ink);padding:16px;background:var(--paper)}
 .dev-category,.card-label,.sector-name,.career-path,.career-universal-label,.watch-label,.say-context{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
 p{font-size:16px;line-height:1.8;margin-bottom:14px}
 .chain{background:var(--paper-2);border-top:2px solid var(--ink);border-bottom:1px solid var(--rule);padding:20px 24px;margin:18px 0}
-.chain-row{display:grid;grid-template-columns:68px 1fr;gap:14px;padding:10px 0;border-bottom:1px solid var(--rule)}
+.chain-row{display:grid;grid-template-columns:90px 1fr;gap:14px;padding:10px 0;border-bottom:1px solid var(--rule)}
 .chain-row:last-child{border-bottom:none}
 .chain-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .chain-text{font-family:'DM Mono',monospace;font-size:11.5px;line-height:1.85;color:var(--ink)}
-.grid-2,.sector-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .watch{background:var(--gold-bg);border:1px solid #dfc98a;border-left:2.5px solid var(--gold);padding:15px 18px;margin-top:12px}
 .career-universal{background:var(--paper-2);border-top:2px solid var(--ink);border-bottom:1px solid var(--rule);padding:14px 18px;margin-bottom:14px}
 .interview-box{border:1px solid var(--rule);border-left:2.5px solid var(--ink);padding:16px 20px}
@@ -75,7 +74,7 @@ p{font-size:16px;line-height:1.8;margin-bottom:14px}
 
 <div class="alert-strip">
   <div class="alert-pip"></div>
-  April closes with a bang: Mag 7 earnings mostly beat, oil spikes past $126, and Powell chairs his final Fed meeting — market on edge heading into May.
+  Powell era ends, Mag 7 earnings split the room, and oil above $110 keeps the pressure on — April closes with a bang.
 </div>
 
 <div class="wrap">
@@ -87,41 +86,41 @@ p{font-size:16px;line-height:1.8;margin-bottom:14px}
   <div class="ticker">
     <div class="ticker-cell">
       <div class="t-label">S&amp;P 500</div>
-      <div class="t-val">7,141</div>
-      <div class="t-chg up">+0.07%</div>
-      <div class="t-note">up slightly vs prior close of 7,136 — on pace for best month since Nov 2020, +9% MTD</div>
+      <div class="t-val">7,139</div>
+      <div class="t-chg up">+0.04%</div>
+      <div class="t-note">vs prior close; flat as mixed Mag 7 earnings offset each other</div>
     </div>
   
 
     <div class="ticker-cell">
       <div class="t-label">Nasdaq</div>
-      <div class="t-val">24,651</div>
-      <div class="t-chg down">-0.09%</div>
-      <div class="t-note">fractionally lower vs prior close — but up ~14% for April, best month since April 2020</div>
+      <div class="t-val">24,557</div>
+      <div class="t-chg down">-0.47%</div>
+      <div class="t-note">vs prior close; Meta&#39;s capex spike weighed on tech</div>
     </div>
   
 
     <div class="ticker-cell">
       <div class="t-label">WTI Crude</div>
-      <div class="t-val">$107.09</div>
-      <div class="t-chg up">+0.2%</div>
-      <div class="t-note">easing from overnight high of $111 — up ~84% vs same time last year on Iran supply shock</div>
+      <div class="t-val">$104.94</div>
+      <div class="t-chg down">-1.82%</div>
+      <div class="t-note">down from recent highs above $110; still ~$50 higher vs. a year ago on Iran blockade</div>
     </div>
   
 
     <div class="ticker-cell">
       <div class="t-label">Brent</div>
-      <div class="t-val">$114.70</div>
-      <div class="t-chg down">-2.8%</div>
-      <div class="t-note">paring gains after spiking to $126 wartime high — still up ~97% vs year ago</div>
+      <div class="t-val">$109.89</div>
+      <div class="t-chg down">-0.50%</div>
+      <div class="t-note">global benchmark; briefly spiked above $114 intraday on Iran escalation fears</div>
     </div>
   
 
     <div class="ticker-cell">
       <div class="t-label">10Y Yield</div>
-      <div class="t-val">4.43%</div>
-      <div class="t-chg up">+7 bps</div>
-      <div class="t-note">vs prior day — jumped after Fed held rates and 3 members dissented against easing language</div>
+      <div class="t-val">4.40%</div>
+      <div class="t-chg up">+5 bps</div>
+      <div class="t-note">vs prior close</div>
     </div>
   </div>
 
@@ -144,33 +143,35 @@ p{font-size:16px;line-height:1.8;margin-bottom:14px}
 
   <div class="smart30" id="smart30">
     <div class="smart30-label">Smart in 30 Seconds</div>
-    <p>The Fed held rates again — no surprise — but three members dissented against language hinting at future cuts, pushing the 10-year yield to a one-month high of 4.43%. Meanwhile, four Mag 7 companies reported mostly strong Q1 results after Wednesday&#39;s close, lifting futures overnight, while oil hit a wartime high of $126 before pulling back as markets priced in possible new U.S. military action in Iran. April ends as one of the strongest months for equities in years, but the macro backdrop heading into May is genuinely complicated: hot oil, a hawkish Fed transition, and AI capex scrutiny all in the same week.</p>
+    <p>The Fed held rates steady for a third straight meeting in what was likely Powell&#39;s final press conference as chair — but a historic 8-4 dissent vote spooked bond markets, pushing the 10-year yield up 5 bps to ~4.40%. Meanwhile, four Magnificent Seven companies reported after Wednesday&#39;s bell: Alphabet and Amazon surged, Meta sold off on massive capex hikes, and Microsoft beat but warned on spending. Apple reports tonight, and oil remains above $100 with a U.S. naval blockade still choking the Strait of Hormuz.</p>
   </div>
 
   <div class="section first" id="s01">
     <div class="section-label"><span class="section-num">01 —</span> What Moved Markets Today</div>
-    <h2>Mag 7 Earnings, Powell&#39;s Exit, and $126 Oil: The Week That Defined April</h2>
+    <h2>The Day Four Things Competed for the Headline</h2>
     <div class="dev-grid">
-      <div class="dev-card"><div class="dev-category">Development 1</div><p>Microsoft, Amazon, Alphabet, and Meta all reported after Wednesday&#39;s close. Microsoft beat on earnings and revenue, with Azure cloud revenue up 40% year-over-year — a number that matters because cloud growth validates the AI capex thesis the whole market is pricing in. Amazon beat estimates and shares rose 4%. Alphabet beat on top and bottom lines, driven by Google Cloud strength. Meta was the outlier: it beat on earnings but hiked its full-year capex guidance to $125–$145 billion, up sharply, sending shares down ~9% as investors questioned whether the spend is getting ahead of the revenue.</p></div>
-      <div class="dev-card"><div class="dev-category">Development 2</div><p>On Thursday morning, Eli Lilly surged ~7% after blowing past Q1 estimates. Mounjaro (diabetes) revenue was up 125% year-over-year to $8.66 billion, and Zepbound (obesity) was up 80% to $4.16 billion — together accounting for roughly two-thirds of Lilly&#39;s total sales of $19.7 billion. The company raised full-year sales guidance by $2 billion. This is a signal that GLP-1 drug demand remains structurally strong despite pricing pressure, which matters for anyone watching pharma sector valuations or healthcare M&amp;A.</p></div>
-      <div class="dev-card"><div class="dev-category">Development 3</div><p>Qualcomm surged 11% in early trading after topping Q2 earnings estimates. The real headline: a note in its release that &quot;a leading hyperscaler custom silicon engagement is on track for initial shipments later this calendar year&quot; — widely read as Qualcomm landing an AI chip deal with a major tech partner. Q3 guidance came in slightly below consensus due to memory supply constraints, but investors looked past it, lifting the broader semiconductor sector including Broadcom, Intel, and AMD.</p></div>
-      <div class="dev-card"><div class="dev-category">Development 4</div><p>The Fed held its benchmark rate unchanged on Wednesday — widely expected — but the vote wasn&#39;t clean. Three members dissented, objecting to language they viewed as an &quot;easing bias,&quot; making this the most hawkish read of a hold decision in recent memory. Traders are now pricing roughly a one-in-three chance of a rate hike by April 2027. Chair Powell confirmed he will stay on the Board of Governors after his chairmanship ends May 15, while nominee Kevin Warsh moves toward Senate confirmation. The leadership transition adds a layer of policy uncertainty heading into the second half of 2026.</p></div>
+      <div class="dev-card"><div class="dev-category">Fed&#39;s Most Divided Vote Since 1992 Sends Yields Higher</div><p>The FOMC voted 8-4 to hold the benchmark rate at 3.5%–3.75% — the most splintered result in 34 years. Three regional Fed presidents dissented hawkishly, pushing back against any dovish forward guidance, while one Trump appointee dissented the other way, wanting a cut. That split matters: it signals the Fed&#39;s next chair, Kevin Warsh (whose nomination cleared the Senate Banking Committee), may inherit a genuinely fractured committee. Yields jumped on the news because more hawks = lower odds of near-term rate cuts = bonds reprice lower, yields higher.</p></div>
+      <div class="dev-card"><div class="dev-category">Alphabet Rockets, Meta Sinks: AI Capex Split the Mag 7</div><p>All four Mag 7 companies that reported beat earnings estimates — but the market reaction was anything but uniform. Alphabet surged after Google Cloud revenue jumped 63% year-over-year to $20 billion, blowing past the $18 billion estimate and validating AI infrastructure spend. Meta fell sharply after raising its full-year capex guidance to $125–$145 billion (up from $115–$135 billion), spooking investors who want AI monetization now, not more spending. Microsoft beat on EPS ($4.27 vs. $4.06 expected) with Azure up 40%, but capex projections of ~$190 billion for the full year kept the stock in check. The takeaway: the market rewards AI revenue proof, punishes AI spend promises.</p></div>
+      <div class="dev-card"><div class="dev-category">Iran Blockade Pushes Oil Above $110 Before Demand Reality Bites</div><p>WTI briefly surged above $110 and Brent spiked above $114 after reports that Trump was being briefed on expanded military options against Iran. The Strait of Hormuz remains effectively closed, cutting off a major share of global oil flows. However, prices pulled back intraday as the IEA flagged demand destruction — projecting global oil demand to contract by 80,000 barrels per day this year, the sharpest decline since COVID. The tension between a genuine supply shock and collapsing demand is what&#39;s keeping oil volatile rather than just spiking endlessly.</p></div>
+      <div class="dev-card"><div class="dev-category">Apple on Deck: Tim Cook&#39;s Final Earnings Call as CEO</div><p>Apple reports Q2 2026 earnings after today&#39;s bell, with analysts expecting EPS of ~$1.95 on revenue of ~$109.7 billion — roughly 15% above the year-ago quarter. The story isn&#39;t just the numbers: Tim Cook announced plans to hand the CEO role to John Ternus in September, so investors will be listening for leadership transition commentary, AI product strategy, and any color on memory cost pressures squeezing hardware margins. iPhone shipments in China reportedly rose ~20% in Q1 2026, suggesting demand holds, but supply chain costs from the AI infrastructure boom are a wild card.</p></div>
     </div>
   </div>
 
   <div class="section" id="s02">
     <div class="section-label"><span class="section-num">02 —</span> Why It Mattered</div>
     <h2>Why investors cared.</h2>
-    <p>April&#39;s 9% S&amp;P 500 rally was built on two pillars — earnings proving AI spending is producing real revenue, and oil stabilizing enough that inflation expectations didn&#39;t spiral. Both are now wobbling: Meta&#39;s capex raise raised ROI questions, oil briefly hit a four-year high of $126/barrel on Iran escalation fears, and 10-year yields jumped on the hawkish Fed dissent. The market is not in crisis, but the easy tailwinds of early April have faded.</p>
-    <p>The core tension right now: Big Tech earnings justify high valuations only if AI capex translates into revenue growth, but Meta just told the market it&#39;s spending even more before it monetizes what it already has. At the same time, oil above $107 keeps inflation elevated and gives the new Fed leadership reason to stay hawkish — meaning rate cuts that investors expected this year may not come. Something has to give: either AI revenue scales fast enough to satisfy investors, or the market reprices risk materially higher.</p>
+    <p>This week was arguably the most consequential earnings-and-policy window of 2026. Five Mag 7 companies reported, the Fed delivered a surprise dissent drama, Powell signaled he&#39;s staying on as governor (preserving some institutional independence), and oil oscillated above $100 on war headlines. The S&amp;P 500 is on pace for its best monthly gain in over five years, up more than 12% in April, making today&#39;s flat close feel like calm after a very loud storm.</p>
+    <p>The market is simultaneously pricing in strong corporate earnings growth (S&amp;P 500 Q1 EPS up ~14% YoY) and an energy shock that is well above the Fed&#39;s inflation target — and those two things can&#39;t coexist forever. If oil stays high and the hawkish Fed dissents win the narrative under Warsh, rate-cut hopes evaporate, and the expensive valuations on tech become harder to justify. Something has to give: either geopolitics cools and oil retreats, or earnings need to keep running hard enough to hold multiples.</p>
   </div>
 
   <div class="section" id="s03">
     <div class="section-label"><span class="section-num">03 —</span> The Chain Reaction</div>
     <h2>Follow the logic.</h2>
     <div class="chain">
-      <div class="chain-row"><div class="chain-label">Iran blockade holds →</div><div class="chain-text">Oil stays elevated → fuel costs rise → inflation sticky → Fed stays hawkish → rate cuts delayed → equity valuations pressured</div></div>
-      <div class="chain-row"><div class="chain-label">AI capex concerns →</div><div class="chain-text">Meta-style spend hikes raise ROI questions → multiple compression for Big Tech → Nasdaq leadership tested → broader market loses its primary engine</div></div>
+      <div class="chain-row"><div class="chain-label">Iran Blockade</div><div class="chain-text">Strait of Hormuz closed → oil above $100 → energy inflation stays elevated</div></div>
+      <div class="chain-row"><div class="chain-label">Fed Dissent</div><div class="chain-text">8-4 hawkish split → rate cut odds drop → 10Y yield jumps → growth stocks pressured</div></div>
+      <div class="chain-row"><div class="chain-label">AI Capex War</div><div class="chain-text">Mega-cap spending rises → investors demand revenue proof → market punishes hype, rewards results</div></div>
+      <div class="chain-row"><div class="chain-label">Powell Stays</div><div class="chain-text">Powell remains as governor → Fed independence partially preserved → Warsh era starts with a divided board</div></div>
     </div>
   </div>
 
@@ -178,14 +179,14 @@ p{font-size:16px;line-height:1.8;margin-bottom:14px}
     <div class="section-label"><span class="section-num">04 —</span> What It Means</div>
     <h2>Breaking it down.</h2>
     <div class="grid-2">
-      <div class="grid-card"><div class="card-label">Rates & Treasury Yields</div><p>The 10-year Treasury yield climbed 7 basis points to 4.43% on Thursday — its highest level in about a month — after the Fed&#39;s hold came with three dissenters pushing back on any hint of future cuts. The 2-year yield crossed above 3.95%, meaning short-term rates, which are more sensitive to Fed policy, moved even more sharply. Higher yields raise the discount rate applied to future earnings, which is why growth and tech stocks are most exposed when the yield moves up — this is the math behind why rate decisions matter so much to equity valuations.</p></div>
-      <div class="grid-card"><div class="card-label">Stocks & Indexes</div><p>The S&amp;P 500 is up roughly 9% for April — on pace for its best month since November 2020 — and the Nasdaq is heading for a 14% April gain, its best since April 2020. Thursday morning&#39;s action showed indexes holding fractional gains as Mag 7 earnings broadly satisfied the bar, but Meta&#39;s 9% drop and oil&#39;s overnight spike to $126 kept a lid on enthusiasm. Apple reports after Thursday&#39;s close — the last Mag 7 name of the season — and its result will set the tone for May.</p></div>
-      <div class="grid-card"><div class="card-label">Broader Economy</div><p>Thursday&#39;s PCE inflation data showed prices holding above the Fed&#39;s 2% target in March, confirming the Fed&#39;s caution is warranted. Initial jobless claims for the week ended April 25 came in at 189,000 — down from 215,000 the prior week, a sign the labor market remains resilient. GDP growth for Q1 came in slightly below expectations. The combination of sticky inflation, solid employment, and below-trend growth is the definition of a difficult macro environment for a central bank to navigate — especially with an oil shock layered on top.</p></div>
-      <div class="grid-card"><div class="card-label">What to Watch</div><p>Whether Apple&#39;s earnings tonight sustain the Mag 7 earnings narrative — or crack it heading into May.</p></div>
+      <div class="grid-card"><div class="card-label">Rates & Treasury Yields</div><p>The 10-year Treasury yield climbed ~5 bps to roughly 4.40% after the Fed&#39;s surprise four-dissent vote — up from 4.35% the prior day and meaningfully higher than the 4.10% level seen a month ago. Higher yields tighten financial conditions without the Fed doing anything formal, pressuring long-duration assets like growth stocks. The 2-year yield also jumped sharply on the dissent news, signaling that markets are repricing any near-term cut expectations lower.</p></div>
+      <div class="grid-card"><div class="card-label">Stocks & Indexes</div><p>The S&amp;P 500 is essentially flat on the day at ~7,139, but that masks a wide dispersion underneath: Alphabet surged, Eli Lilly spiked ~7% on strong GLP-1 drug sales (Mounjaro up 125% YoY), Meta fell ~9%, and Qualcomm jumped ~11% on AI silicon demand signals. The Dow is modestly positive while the Nasdaq dips, reflecting that heavy AI-spenders are getting punished while companies showing AI payoff are rewarded. April closes as one of the strongest months for the S&amp;P 500 in years, up more than 12% from the March 30 low.</p></div>
+      <div class="grid-card"><div class="card-label">Broader Economy</div><p>Thursday&#39;s PCE inflation data came in mostly in line with expectations — stubborn but not accelerating — while GDP growth came in slightly below forecasts, a combination that keeps stagflation risk alive as a narrative. The IEA&#39;s demand destruction warning on oil is a rare bit of macro relief: if high energy prices are already throttling consumption, the supply shock may self-correct before the Fed has to act. Tax refunds averaging $3,400 this year — up 11% from last year — are providing a partial household offset against elevated fuel costs.</p></div>
+      <div class="grid-card"><div class="card-label">What to Watch</div><p>Whether Apple&#39;s report tonight confirms or breaks the Mag 7 earnings-beat narrative heading into May Apple Q2 earnings after the bell tonight — EPS, Services revenue, and CEO transition commentary are the three things to watch PCE inflation final read and any Fed speaker reactions to the historic dissent vote Kevin Warsh full Senate confirmation vote timeline and first public signals on rate policy direction</p></div>
     </div>
     <div class="watch">
       <div class="watch-label">What to watch next</div>
-      <p>Apple Q1 earnings after today&#39;s close — last Mag 7 print, focus on services revenue and China commentary · Exxon and Chevron earnings Friday — direct read on energy sector profitability at $107 oil · Kevin Warsh Senate confirmation vote — who becomes the next Fed chair shapes the entire rate path for 2026–2027</p>
+      <p>Apple Q2 earnings after the bell tonight — EPS, Services revenue, and CEO transition commentary are the three things to watch · PCE inflation final read and any Fed speaker reactions to the historic dissent vote · Kevin Warsh full Senate confirmation vote timeline and first public signals on rate policy direction</p>
     </div>
   </div>
 
@@ -193,9 +194,10 @@ p{font-size:16px;line-height:1.8;margin-bottom:14px}
     <div class="section-label"><span class="section-num">05 —</span> Market Sector Lens</div>
     <h2>Who's moving and why.</h2>
     <div class="sector-grid">
-      <div class="sector-card"><div class="sector-name">Technology — Mixed but resilient</div><p>Alphabet, Amazon, and Microsoft all delivered, with Azure&#39;s 40% cloud growth and Amazon&#39;s beat leading the way. The sector&#39;s problem is Meta: its $125–$145 billion capex range for 2026 is up sharply and investors want to see revenue justify it. Qualcomm&#39;s AI chip win and the broader semis rally — Broadcom, Intel, AMD all higher — show that the infrastructure build-out thesis is still intact at the component level even as platform-level spend faces scrutiny.</p></div>
-      <div class="sector-card"><div class="sector-name">Energy — Extreme volatility</div><p>Brent hit $126 intraday Thursday — its highest since 2022 — before pulling back to ~$115 after reports that the U.S. military is briefing Trump on potential new Iran action. WTI is at $107, up ~84% year-over-year, as the Strait of Hormuz remains effectively closed and U.S. inventories show steep drawdowns. Energy companies like Chevron and Exxon, reporting Friday, are printing record cash flows at these prices, but any diplomatic breakthrough could erase gains fast.</p></div>
-      <div class="sector-card"><div class="sector-name">Healthcare / Pharma — Strong outperformer</div><p>Eli Lilly&#39;s blowout quarter — $19.7 billion in revenue, up 56% year-over-year — is the story of the sector. GLP-1 drugs Mounjaro and Zepbound together drove roughly two-thirds of total sales, and the FDA approved Foundayo, Lilly&#39;s oral GLP-1 pill, adding a new growth vector. Merck also beat, with Keytruda (cancer) bolstering results. Healthcare is increasingly viewed as a defensive-growth hybrid: real earnings growth that doesn&#39;t depend on AI capex ROI.</p></div>
+      <div class="sector-card"><div class="sector-name">Technology — Mixed — rewarding proof, punishing promises</div><p>Alphabet and Microsoft beat and showed real AI revenue traction (Google Cloud +63% YoY, Azure +40%), while Meta&#39;s capex escalation to up to $145 billion triggered a selloff. The sector&#39;s internal divide is sharpening: investors are no longer giving blanket credit for AI spend — they want the revenue line to move.</p></div>
+      <div class="sector-card"><div class="sector-name">Energy — Volatile — supply shock vs. demand destruction</div><p>Oil is up ~77% versus a year ago (Brent ~$110 vs ~$62 last year), making energy the top-performing S&amp;P 500 sector in 2026 with estimated earnings up nearly 40% YoY. But the IEA&#39;s forecast of an 80,000 bpd demand contraction signals the high-price environment is starting to kill demand — a ceiling may be forming even with the Hormuz blockade in place.</p></div>
+      <div class="sector-card"><div class="sector-name">Health Care — Bright spot — GLP-1 drugs carrying the sector</div><p>Eli Lilly spiked ~7% after Mounjaro (diabetes) sales rose 125% and Zepbound (obesity) rose 80% YoY, with the company raising its full-year guidance to $82–$85 billion in sales. Health care as a whole is down ~5% YTD due to macro headwinds, but GLP-1 names are the clear outlier and a focal point for investors in the space.</p></div>
+      <div class="sector-card"><div class="sector-name">Financials — Under pressure — yields up, cut hopes fading</div><p>The hawkish Fed dissent and rising yields are a mixed bag for financials: higher rates help net interest margins for banks but compress bond portfolios and raise credit risk if energy-driven inflation slows the consumer. The sector is down ~5% YTD, and the Warsh transition adds policy uncertainty that keeps financials investors cautious heading into Q2.</p></div>
     </div>
   </div>
 
@@ -204,13 +206,13 @@ p{font-size:16px;line-height:1.8;margin-bottom:14px}
     <h2>What people in finance are actually thinking about today.</h2>
     <div class="career-universal">
       <div class="career-universal-label">For everyone in finance</div>
-      <p>Gas prices at the pump are averaging close to $4.30/gallon nationally in April — the highest monthly average since 2022 — because WTI crude above $107 flows directly into refinery costs and then to the gas station. Diesel is even worse, averaging over $5.80/gallon, which raises costs for trucking, logistics, and anything that ships. If you&#39;ve noticed grocery prices creeping higher, energy costs embedded throughout the supply chain are a big reason why.</p>
+      <p>Today is effectively a final exam for the biggest companies in the market. Alphabet, Amazon, Microsoft, and Meta all reported this week — and tonight Apple closes out the Mag 7 earnings gauntlet. These five companies represent trillions in market cap and set the tone for the entire market heading into summer. Understanding why Alphabet went up and Meta went down on similar beats is the kind of nuance that separates sharp market readers from headline skimmers: the market is no longer paying for AI promises — it wants to see the revenue.</p>
     </div>
     <div class="career-grid">
-      <div class="career-card"><div class="career-path">Wealth Management</div><p><strong>Client Portfolio Rebalancing: When Oil, Rates, and Tech All Move Together</strong> Wealth managers are dealing with a rare scenario where three major asset classes are all repricing simultaneously: oil up nearly 100% year-over-year (inflation risk), 10-year yields climbing (bond price pressure), and Mag 7 stocks up 14% in one month (concentration risk). For client conversations, the core question is rebalancing: portfolios that weren&#39;t trimmed on tech&#39;s April rally may now be overweight growth heading into a potentially hawkish Fed transition. Energy stocks and healthcare are acting as natural hedges — Eli Lilly up sharply, General Dynamics up 5% on defense orders, defensive names holding ground. Advisors who can explain the yield–equity relationship and why sector rotation matters in this environment will stand out in client reviews and in job interviews.</p></div>
-      <div class="career-card"><div class="career-path">Investment Banking (Energy &amp; Natural Resources)</div><p><strong>Oil above $107 means record deal flow in energy — this desk is active</strong> When oil sustains triple-digit pricing, energy companies have cash to deploy — into acquisitions, refinancing, and capital raises. The UAE&#39;s shock exit from OPEC, ongoing supply disruption through the Strait of Hormuz, and record U.S. crude exports are all structural story lines that energy IB teams are pitching. If you&#39;re interviewing in E&amp;R coverage or commodities-adjacent roles, walk in knowing the Brent–WTI spread ($8–$12/barrel currently), what&#39;s driving it (Middle East shipping costs), and why U.S. producers are the relative beneficiaries.</p></div>
-      <div class="career-card"><div class="career-path">Equity Research (Technology)</div><p><strong>AI capex ROI is the research question of 2026 — analysts are being tested on it daily</strong> Every Mag 7 earnings call this week came down to one question: is the AI spending producing enough revenue to justify the cost? Analysts who modeled Azure&#39;s 40% cloud growth against Microsoft&#39;s capex curve, or who flagged Meta&#39;s $145 billion capex ceiling as a margin risk before the print, were ahead of consensus. If you want to break into tech equity research, being able to build a simple capex-to-revenue bridge model for a hyperscaler is now table stakes. The Mag 7 collectively are expected to spend $650 billion in capex in 2026 — knowing which companies are generating the highest return on that spend is what separates good research from generic coverage.</p></div>
-      <div class="career-card"><div class="career-path">Macro / Fixed Income Strategy</div><p><strong>The Fed transition and rate path uncertainty make this the most interesting desk in the market right now</strong> Jerome Powell&#39;s tenure ends May 15. Kevin Warsh, his likely successor, is seen as more hawkish. Three Fed members just dissented on a hold — an unusually strong signal. Traders are pricing a one-in-three chance of a rate hike by April 2027. If you&#39;re targeting macro strategy, rates trading, or fixed income research roles, the current setup is a gift: the yield curve, Fed composition, inflation dynamics (oil-driven PCE), and central bank credibility are all live debates. Being able to articulate why the 10-year yield jumped 7 bps on a rate hold — and what that means for duration positioning — is exactly what interviewers are probing for.</p></div>
+      <div class="career-card"><div class="career-path">Wealth Management</div><p><strong>How the Fed dissent and oil shock reshape client portfolio conversations right now</strong> Wealth managers are navigating a tricky environment: equities near all-time highs but inflation above target, oil elevated, and the Fed&#39;s next move suddenly less certain after the 8-4 dissent. For client conversations, the key reframe is around real returns — with the 10-year at 4.40%, fixed income is actually competitive again after years of near-zero rates. Advisors are also fielding questions on energy exposure (sector up ~40% in earnings, but demand destruction risk is real) and whether to trim overweight Mag 7 positions after a 12%+ April rally. The Powell-to-Warsh transition is also a talking point: what does a potentially more hawkish Fed chair mean for bond duration and equity multiples in client portfolios?</p></div>
+      <div class="career-card"><div class="career-path">Equity Research</div><p><strong>Mag 7 earnings week is your live case study in how to build a thesis</strong> This week is a textbook example of what equity research analysts do: model revenue by segment, set expectations, and explain why the stock moved vs. what you expected. Alphabet beating on Cloud while Meta sold off on capex — despite both beating EPS — is exactly the kind of nuance a buy-side or sell-side analyst has to explain to PMs the next morning. Practice writing a one-paragraph post-earnings note on any Mag 7 name: what was the key surprise, how does it change the forward thesis, and what&#39;s the new price target rationale?</p></div>
+      <div class="career-card"><div class="career-path">Fixed Income / Rates</div><p><strong>The Fed dissent just made your corner of finance the most interesting place to be</strong> A four-dissent FOMC vote — the most divided since 1992 — is the kind of event that reprices the entire yield curve and creates trading opportunities across rates desks. If you&#39;re targeting fixed income roles at banks, asset managers, or the Fed itself, being able to explain how hawkish dissents affect the front end of the curve (2-year yield spiked sharply) vs. the long end is exactly the technical fluency interviews will test. Bonus: the Warsh transition adds a macro uncertainty premium that keeps this space active all summer.</p></div>
+      <div class="career-card"><div class="career-path">Investment Banking (Energy)</div><p><strong>Iran blockade and UAE&#39;s OPEC exit are reshaping the energy deal pipeline</strong> With oil ~77% higher year-over-year and the UAE announcing it will exit OPEC on May 1, energy IB desks are seeing a surge in deal flow — M&amp;A among producers seeking scale, refinancing at higher commodity-price valuations, and infrastructure transactions tied to U.S. export surges above 6 million barrels per day. For students targeting energy IB, being able to fluently discuss how a Hormuz blockade changes reserve valuations and why U.S. producers benefit from the supply shock (as alternative suppliers) is a genuine differentiator in interviews right now.</p></div>
     </div>
   </div>
 
@@ -219,9 +221,9 @@ p{font-size:16px;line-height:1.8;margin-bottom:14px}
     <h2>What to actually use in a conversation.</h2>
     <div class="interview-box">
       <ul>
-        <li>&quot;The Fed held rates again Wednesday, but three members dissented against easing language — the most hawkish read of a hold in recent memory — pushing the 10-year yield 7 basis points higher to 4.43%, because the market is now pricing a reduced probability of cuts and a non-trivial chance of a hike by 2027.&quot;</li>
-        <li>&quot;Meta&#39;s Q1 beat was overshadowed by its capex guidance raise to $125–$145 billion for 2026, which matters because it raises the bar on AI monetization — if that spending doesn&#39;t generate proportional revenue, it compresses margins and justifies multiple compression across the entire Mag 7 basket.&quot;</li>
-        <li>&quot;Brent crude briefly hit $126 today — its highest level since 2022 — because the U.S. is maintaining a naval blockade of Iran and the Strait of Hormuz remains effectively closed, cutting off a major share of global oil flows and keeping a structurally elevated risk premium in energy markets.&quot;</li>
+        <li>The Fed&#39;s 8-4 dissent was the most divided vote since October 1992 — three hawks pushed back against any dovish guidance, signaling the committee may be moving toward rate hikes rather than cuts under incoming Chair Warsh.</li>
+        <li>Alphabet&#39;s 63% year-over-year jump in Google Cloud revenue to $20 billion beat estimates by nearly $2 billion, proving that AI infrastructure spend is translating into real revenue and validating the hyperscaler capex thesis.</li>
+        <li>Brent crude spiked above $114 intraday — its highest level since 2022 — because the Strait of Hormuz remains effectively closed by the U.S.-Iran blockade, cutting a major share of global oil flows and triggering what the IEA called an unprecedented supply shock.</li>
       </ul>
     </div>
   </div>
@@ -229,8 +231,8 @@ p{font-size:16px;line-height:1.8;margin-bottom:14px}
   <div class="section" id="s08">
     <div class="section-label"><span class="section-num">08 —</span> Term of the Day</div>
     <div class="term">
-      <div class="term-word">Dissent (FOMC)</div>
-      <p>When one or more Federal Reserve policymakers vote against the majority decision at a meeting — a rare signal that carries outsized weight because it signals the policy consensus is fracturing, which markets interpret as a potential shift in direction.</p>
+      <div class="term-word">FOMC Dissent</div>
+      <p>When one or more Federal Reserve policymakers formally vote against the majority&#39;s rate decision — signaling internal disagreement on the appropriate policy path. Dissents are rare and closely watched because they often preview future policy shifts.</p>
     </div>
   </div>
 
@@ -238,21 +240,21 @@ p{font-size:16px;line-height:1.8;margin-bottom:14px}
     <div class="section-label"><span class="section-num">09 —</span> Say This Today</div>
     <div class="say">
       <span class="say-context">For an interview, coffee chat, or networking call</span>
-      <p>&quot;The interesting thing about Wednesday&#39;s Fed decision isn&#39;t that they held — everyone expected that — it&#39;s that three members dissented against the easing language, which is an unusually strong hawkish signal and explains why yields jumped even on a hold.&quot;</p>
+      <p>&quot;The Fed&#39;s 8-4 vote was the most fractured since &#39;92 — the hawkish dissents aren&#39;t just noise, they&#39;re a signal that the committee may be leaning toward tightening under Warsh, which reprices rate-cut expectations and puts pressure on long-duration assets.&quot;</p>
     </div>
   </div>
 
   
   <div class="section" id="s10">
-    <div class="section-label"><span class="section-num">10 —</span> Powell&#39;s Final Chapter — and What Warsh Means for the Rate Path</div>
-    <h2>Powell&#39;s Final Chapter — and What Warsh Means for the Rate Path</h2>
-    <p>Jerome Powell chaired his last FOMC meeting Wednesday, with his term ending May 15. Kevin Warsh, his expected successor, is seen as more hawkish on inflation — and with three current members already dissenting against any easing bias, the new Fed may be structurally less inclined to cut rates than markets had hoped entering 2026.</p>
+    <div class="section-label"><span class="section-num">10 —</span> Powell Stays on as Fed Governor — Here&#39;s Why It Matters</div>
+    <h2>Powell Stays on as Fed Governor — Here&#39;s Why It Matters</h2>
+    <p>Jerome Powell announced he will remain on the Board of Governors after his chairmanship ends May 15, citing an ongoing renovations investigation into Fed headquarters. By staying, Powell retains a vote on the seven-member board, preventing the administration from filling his seat and potentially limiting how far a Warsh-led Fed can shift policy.</p>
   </div>
   
 
   <div class="sources">
     <strong>Sources</strong><br>
-    CNBC · Yahoo Finance · Charles Schwab Market Update · Trading Economics · 247 Wall Street
+    CNBC · 247 Wall St. · Charles Schwab · Trading Economics · The Motley Fool
   </div>
 
   <div class="footer">
