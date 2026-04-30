@@ -1,409 +1,781 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Brief</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>The Brief — Daily Market Intelligence | April 30, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=DM+Mono:wght@300;400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #f9f6f0;
+    --cream-dark: #f0ebe1;
+    --cream-border: #e2d9cc;
+    --ink: #1a1714;
+    --ink-mid: #3d3530;
+    --ink-light: #6b5f55;
+    --ink-faint: #9c8f84;
+    --red-alert: #1c1410;
+    --red-accent: #c0392b;
+    --green-accent: #1a6b3a;
+    --green-light: #eaf4ed;
+    --green-border: #a8d5b5;
+    --gold: #b07d2e;
+    --gold-light: #f5ead4;
+    --blue-accent: #1b3f6e;
+    --blue-light: #e8eef6;
+    --serif: 'Playfair Display', Georgia, serif;
+    --body: 'Source Serif 4', Georgia, serif;
+    --mono: 'DM Mono', 'Courier New', monospace;
+  }
+
+  html { font-size: 16px; }
+
+  body {
+    background-color: var(--cream);
+    color: var(--ink);
+    font-family: var(--body);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page-wrap {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 24px 60px;
+  }
+
+  /* ── MASTHEAD ── */
+  .masthead {
+    text-align: center;
+    padding: 44px 0 20px;
+    border-bottom: 2px solid var(--ink);
+  }
+
+  .masthead-eyebrow {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 10px;
+  }
+
+  .masthead-title {
+    font-family: var(--serif);
+    font-size: 3rem;
+    font-weight: 900;
+    letter-spacing: -0.01em;
+    line-height: 1.05;
+    color: var(--ink);
+  }
+
+  .masthead-subtitle {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--ink-light);
+    margin-top: 6px;
+  }
+
+  .masthead-rule {
+    width: 60px;
+    height: 2px;
+    background: var(--gold);
+    margin: 14px auto 0;
+  }
+
+  /* ── ALERT STRIP ── */
+  .alert-strip {
+    background: var(--red-alert);
+    color: #e8ddd4;
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 9px 16px;
+    margin-top: 0;
+  }
+
+  .alert-strip span.hi { color: #f0c070; font-weight: 500; }
+
+  /* ── DATELINE ── */
+  .dateline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--cream-border);
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--ink-light);
+    letter-spacing: 0.06em;
+    margin-bottom: 0;
+  }
+
+  /* ── TICKER ROW ── */
+  .ticker-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    border: 1px solid var(--cream-border);
+    border-top: none;
+    margin-bottom: 28px;
+    background: var(--cream-dark);
+  }
+
+  .ticker-cell {
+    padding: 11px 10px;
+    border-right: 1px solid var(--cream-border);
+    text-align: center;
+  }
+
+  .ticker-cell:last-child { border-right: none; }
+
+  .ticker-label {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 3px;
+  }
+
+  .ticker-value {
+    font-family: var(--mono);
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .ticker-change {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    margin-top: 2px;
+  }
+
+  .up { color: var(--green-accent); }
+  .dn { color: var(--red-accent); }
+  .fl { color: var(--ink-faint); }
+
+  /* ── TABLE OF CONTENTS ── */
+  .toc-block {
+    border: 1px solid var(--cream-border);
+    background: var(--cream-dark);
+    padding: 20px 24px;
+    margin-bottom: 32px;
+  }
+
+  .toc-title {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 12px;
+  }
+
+  .toc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 24px;
+  }
+
+  .toc-item {
+    font-family: var(--body);
+    font-size: 0.82rem;
+    color: var(--ink-mid);
+    text-decoration: none;
+    padding: 3px 0;
+    border-bottom: 1px dotted var(--cream-border);
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  .toc-item:hover { color: var(--gold); }
+
+  .toc-num {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    color: var(--ink-faint);
+    flex-shrink: 0;
+  }
+
+  /* ── SMART IN 30 BLOCK ── */
+  .smart30 {
+    background: var(--red-alert);
+    color: #ede5da;
+    padding: 28px 32px;
+    margin-bottom: 36px;
+    position: relative;
+  }
+
+  .smart30-label {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #b5a090;
+    margin-bottom: 12px;
+  }
+
+  .smart30-headline {
+    font-family: var(--serif);
+    font-size: 1.45rem;
+    font-weight: 700;
+    font-style: italic;
+    color: #f5ede0;
+    line-height: 1.3;
+    margin-bottom: 16px;
+  }
+
+  .smart30 ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .smart30 ul li {
+    font-family: var(--body);
+    font-size: 0.88rem;
+    color: #d9cfc4;
+    padding: 5px 0 5px 18px;
+    position: relative;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    line-height: 1.5;
+  }
+
+  .smart30 ul li:last-child { border-bottom: none; }
+
+  .smart30 ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 0.8rem;
+  }
+
+  .smart30 ul li strong { color: #f0e4d0; }
+
+  /* ── SECTION HEADERS ── */
+  .section-header {
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--cream-border);
+  }
+
+  .section-num {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.15;
+  }
+
+  .section-block {
+    margin-bottom: 40px;
+  }
+
+  /* ── EDITORIAL BODY ── */
+  .editorial p {
+    font-family: var(--body);
+    font-size: 0.95rem;
+    color: var(--ink-mid);
+    line-height: 1.72;
+    margin-bottom: 14px;
+  }
+
+  .editorial p strong { color: var(--ink); font-weight: 600; }
+
+  .editorial .lede {
+    font-size: 1.05rem;
+    color: var(--ink);
+    font-weight: 300;
+    font-style: italic;
+    border-left: 3px solid var(--gold);
+    padding-left: 16px;
+    margin-bottom: 18px;
+  }
+
+  /* ── BULLET LISTS ── */
+  .bullet-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 14px;
+  }
+
+  .bullet-list li {
+    font-family: var(--body);
+    font-size: 0.92rem;
+    color: var(--ink-mid);
+    padding: 6px 0 6px 20px;
+    position: relative;
+    border-bottom: 1px solid var(--cream-border);
+    line-height: 1.55;
+  }
+
+  .bullet-list li:last-child { border-bottom: none; }
+
+  .bullet-list li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 0.75rem;
+    top: 8px;
+  }
+
+  .bullet-list li strong { color: var(--ink); }
+
+  /* ── CHAIN REACTION ── */
+  .chain {
+    background: var(--blue-light);
+    border: 1px solid #c5d5e8;
+    padding: 20px 24px;
+    margin-bottom: 14px;
+  }
+
+  .chain-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(27,63,110,0.1);
+  }
+
+  .chain-step:last-child { border-bottom: none; padding-bottom: 0; }
+  .chain-step:first-child { padding-top: 0; }
+
+  .chain-icon {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--blue-accent);
+    background: #d0def0;
+    padding: 3px 8px;
+    border-radius: 2px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    font-weight: 500;
+  }
+
+  .chain-text {
+    font-family: var(--body);
+    font-size: 0.9rem;
+    color: var(--ink-mid);
+    line-height: 1.55;
+  }
+
+  .chain-text strong { color: var(--blue-accent); }
+
+  /* ── CARD GRID ── */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+
+  .card-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+
+  .card {
+    background: var(--cream-dark);
+    border: 1px solid var(--cream-border);
+    padding: 16px;
+  }
+
+  .card-label {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  .card-headline {
+    font-family: var(--serif);
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 7px;
+    line-height: 1.25;
+  }
+
+  .card p {
+    font-family: var(--body);
+    font-size: 0.82rem;
+    color: var(--ink-mid);
+    line-height: 1.55;
+  }
+
+  /* ── SECTOR TABLE ── */
+  .sector-card {
+    border: 1px solid var(--cream-border);
+    overflow: hidden;
+    margin-bottom: 14px;
+  }
+
+  .sector-row {
+    display: grid;
+    grid-template-columns: 1.8fr 0.8fr 2.5fr;
+    align-items: center;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--cream-border);
+    gap: 12px;
+  }
+
+  .sector-row:last-child { border-bottom: none; }
+
+  .sector-row:nth-child(even) { background: var(--cream-dark); }
+
+  .sector-name {
+    font-family: var(--body);
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .sector-move {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  .sector-note {
+    font-family: var(--body);
+    font-size: 0.8rem;
+    color: var(--ink-light);
+    font-style: italic;
+  }
+
+  /* ── CAREER CARDS ── */
+  .career-card {
+    background: var(--cream-dark);
+    border: 1px solid var(--cream-border);
+    border-top: 3px solid var(--gold);
+    padding: 18px 18px 16px;
+  }
+
+  .career-label {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .career-title {
+    font-family: var(--serif);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+
+  .career-card p {
+    font-family: var(--body);
+    font-size: 0.83rem;
+    color: var(--ink-mid);
+    line-height: 1.58;
+  }
+
+  /* ── INTERVIEW BLOCK ── */
+  .interview-block {
+    background: var(--gold-light);
+    border: 1px solid #d4b870;
+    border-left: 4px solid var(--gold);
+    padding: 20px 24px;
+    margin-bottom: 14px;
+  }
+
+  .interview-block ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+  }
+
+  .interview-block ul li {
+    font-family: var(--body);
+    font-size: 0.9rem;
+    color: var(--ink-mid);
+    padding: 7px 0 7px 20px;
+    position: relative;
+    border-bottom: 1px solid rgba(176, 125, 46, 0.2);
+    line-height: 1.5;
+  }
+
+  .interview-block ul li:last-child { border-bottom: none; }
+
+  .interview-block ul li::before {
+    content: 'Q';
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    font-weight: 500;
+    position: absolute;
+    left: 0;
+    top: 9px;
+    color: var(--gold);
+    background: #d4b870;
+    width: 14px;
+    height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    padding: 2px 0 0 2px;
+  }
+
+  /* ── TERM OF THE DAY ── */
+  .term-block {
+    border: 1px solid var(--cream-border);
+    padding: 22px 24px;
+    background: var(--cream-dark);
+    margin-bottom: 14px;
+    position: relative;
+  }
+
+  .term-label {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 6px;
+  }
+
+  .term-word {
+    font-family: var(--serif);
+    font-size: 1.55rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+
+  .term-pronunciation {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--ink-faint);
+    margin-bottom: 12px;
+    font-style: italic;
+  }
+
+  .term-block p {
+    font-family: var(--body);
+    font-size: 0.9rem;
+    color: var(--ink-mid);
+    line-height: 1.65;
+  }
+
+  .term-block p strong { color: var(--ink); }
+
+  .term-used {
+    margin-top: 12px;
+    font-style: italic;
+    border-top: 1px solid var(--cream-border);
+    padding-top: 12px;
+  }
+
+  /* ── SAY THIS TODAY ── */
+  .say-this {
+    background: var(--green-light);
+    border: 1px solid var(--green-border);
+    border-left: 4px solid var(--green-accent);
+    padding: 20px 24px;
+    margin-bottom: 40px;
+  }
+
+  .say-label {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--green-accent);
+    margin-bottom: 10px;
+  }
+
+  .say-quote {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.55;
+    margin-bottom: 10px;
+  }
+
+  .say-explain {
+    font-family: var(--body);
+    font-size: 0.83rem;
+    color: var(--ink-mid);
+    line-height: 1.55;
+  }
+
+  /* ── CHANGED SINCE MORNING ── */
+  .changed-block {
+    background: #fff8f0;
+    border: 1px solid #e8c88a;
+    border-left: 4px solid #d48a20;
+    padding: 18px 22px;
+    margin-bottom: 40px;
+  }
+
+  .changed-label {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #a06010;
+    margin-bottom: 10px;
+  }
+
+  .changed-block ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .changed-block ul li {
+    font-family: var(--body);
+    font-size: 0.88rem;
+    color: var(--ink-mid);
+    padding: 6px 0 6px 18px;
+    position: relative;
+    border-bottom: 1px solid #f0d8a0;
+    line-height: 1.5;
+  }
+
+  .changed-block ul li:last-child { border-bottom: none; }
+
+  .changed-block ul li::before {
+    content: '↻';
+    position: absolute;
+    left: 0;
+    color: #d48a20;
+    font-size: 0.85rem;
+    top: 6px;
+  }
+
+  /* ── SOURCES ── */
+  .sources-block {
+    border-top: 1px solid var(--cream-border);
+    padding-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  .sources-label {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 8px;
+  }
+
+  .sources-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .source-pill {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    background: var(--cream-dark);
+    border: 1px solid var(--cream-border);
+    color: var(--ink-light);
+    padding: 3px 10px;
+    border-radius: 2px;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    text-align: center;
+    padding: 20px 0 0;
+    border-top: 2px solid var(--ink);
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    color: var(--ink-faint);
+    letter-spacing: 0.08em;
+    line-height: 1.8;
+  }
+
+  .footer-title {
+    font-family: var(--serif);
+    font-size: 0.85rem;
+    color: var(--ink);
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    margin: 24px 0;
+  }
+
+  /* ── HIGHLIGHT PILL ── */
+  .pill {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 2px 9px;
+    border-radius: 2px;
+    margin-right: 4px;
+  }
+
+  .pill-red { background: #fdecea; color: var(--red-accent); border: 1px solid #f5c0bb; }
+  .pill-green { background: var(--green-light); color: var(--green-accent); border: 1px solid var(--green-border); }
+  .pill-gold { background: var(--gold-light); color: var(--gold); border: 1px solid #d4b870; }
+  .pill-blue { background: var(--blue-light); color: var(--blue-accent); border: 1px solid #c5d5e8; }
+
+  @media (max-width: 640px) {
+    .masthead-title { font-size: 2rem; }
+    .ticker-row { grid-template-columns: repeat(3, 1fr); }
+    .ticker-cell:nth-child(4), .ticker-cell:nth-child(5) { border-top: 1px solid var(--cream-border); }
+    .card-grid { grid-template-columns: 1fr; }
+    .card-grid-2 { grid-template-columns: 1fr; }
+    .toc-grid { grid-template-columns: 1fr; }
+    .sector-row { grid-template-columns: 1fr 0.6fr; }
+    .sector-note { display: none; }
+  }
+</style>
 </head>
 <body>
-  <div>Last updated: 4/29/2026, 6:50:40 PM ET</div>
-  <pre>Now I have enough information to write a thorough, well-cited brief. Let me compile it.
+<div class="page-wrap">
 
-```html
-&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
-  &lt;meta charset=&quot;UTF-8&quot; /&gt;
-  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;/&gt;
-  &lt;title&gt;Market Brief — April 29, 2026&lt;/title&gt;
-  &lt;style&gt;
-    body {
-      font-family: &#39;Georgia&#39;, serif;
-      background-color: #f9f7f4;
-      color: #1a1a1a;
-      max-width: 780px;
-      margin: 0 auto;
-      padding: 32px 20px 60px;
-      line-height: 1.7;
-    }
-    h1 {
-      font-size: 1.65rem;
-      font-weight: bold;
-      margin-bottom: 2px;
-      color: #111;
-    }
-    .dateline {
-      font-size: 0.85rem;
-      color: #777;
-      margin-bottom: 28px;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      font-family: &#39;Helvetica Neue&#39;, sans-serif;
-    }
-    h2 {
-      font-size: 1.1rem;
-      font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 0.07em;
-      color: #b5451b;
-      margin-top: 42px;
-      margin-bottom: 6px;
-      font-family: &#39;Helvetica Neue&#39;, sans-serif;
-      border-top: 1px solid #e0dad2;
-      padding-top: 20px;
-    }
-    h3 {
-      font-size: 1rem;
-      font-weight: bold;
-      margin-top: 20px;
-      margin-bottom: 4px;
-      color: #1a1a1a;
-      font-family: &#39;Helvetica Neue&#39;, sans-serif;
-    }
-    p {
-      margin: 8px 0 14px;
-      font-size: 0.97rem;
-    }
-    ul {
-      padding-left: 20px;
-      margin: 6px 0 14px;
-    }
-    li {
-      margin-bottom: 7px;
-      font-size: 0.97rem;
-    }
-    .toc {
-      background: #f0ece5;
-      border-left: 4px solid #b5451b;
-      padding: 16px 22px;
-      border-radius: 4px;
-      margin-bottom: 32px;
-    }
-    .toc p {
-      font-family: &#39;Helvetica Neue&#39;, sans-serif;
-      font-size: 0.82rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #888;
-      margin: 0 0 8px;
-      font-weight: bold;
-    }
-    .toc ol {
-      margin: 0;
-      padding-left: 20px;
-    }
-    .toc li {
-      font-size: 0.92rem;
-      margin-bottom: 4px;
-      font-family: &#39;Helvetica Neue&#39;, sans-serif;
-    }
-    .toc a {
-      color: #b5451b;
-      text-decoration: none;
-    }
-    .toc a:hover {
-      text-decoration: underline;
-    }
-    .card {
-      background: #fff;
-      border: 1px solid #e5dfd7;
-      border-radius: 6px;
-      padding: 14px 18px;
-      margin: 10px 0 16px;
-    }
-    .card-label {
-      font-family: &#39;Helvetica Neue&#39;, sans-serif;
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.09em;
-      color: #999;
-      margin-bottom: 4px;
-      font-weight: bold;
-    }
-    .snapshot-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin: 12px 0 18px;
-    }
-    .snap-item {
-      background: #fff;
-      border: 1px solid #e5dfd7;
-      border-radius: 5px;
-      padding: 10px 14px;
-    }
-    .snap-item .label {
-      font-family: &#39;Helvetica Neue&#39;, sans-serif;
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #999;
-    }
-    .snap-item .value {
-      font-size: 1.05rem;
-      font-weight: bold;
-      color: #111;
-      margin-top: 2px;
-    }
-    .snap-item .change {
-      font-size: 0.82rem;
-      margin-top: 1px;
-      font-family: &#39;Helvetica Neue&#39;, sans-serif;
-    }
-    .up { color: #2a7a2a; }
-    .down { color: #c0392b; }
-    .tag {
-      display: inline-block;
-      background: #f0ece5;
-      color: #777;
-      font-family: &#39;Helvetica Neue&#39;, sans-serif;
-      font-size: 0.72rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      padding: 2px 8px;
-      border-radius: 20px;
-      margin-right: 5px;
-      margin-bottom: 8px;
-    }
-    .say-this {
-      background: #1a1a1a;
-      color: #f9f7f4;
-      border-radius: 6px;
-      padding: 18px 22px;
-      margin: 10px 0 16px;
-      font-style: italic;
-      font-size: 0.97rem;
-      line-height: 1.65;
-    }
-    .term-box {
-      background: #fff;
-      border-left: 4px solid #1a1a1a;
-      padding: 14px 20px;
-      border-radius: 4px;
-      margin: 10px 0 16px;
-    }
-    .term-box .term-word {
-      font-weight: bold;
-      font-size: 1.05rem;
-      margin-bottom: 4px;
-    }
-    .update-banner {
-      background: #fff7e6;
-      border-left: 4px solid #e67e22;
-      padding: 14px 20px;
-      border-radius: 4px;
-      margin: 10px 0 16px;
-    }
-    .divider {
-      border: none;
-      border-top: 1px solid #e5dfd7;
-      margin: 10px 0 0;
-    }
-    @media (max-width: 520px) {
-      .snapshot-grid { grid-template-columns: 1fr 1fr; }
-    }
-  &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
+  <!-- MASTHEAD -->
+  <header class="masthead">
+    <div class="masthead-eyebrow">Daily Market Intelligence</div>
+    <div class="masthead-title">The Brief</div>
+    <div class="masthead-subtitle">Markets · Macro · Careers · Context</div>
+    <div class="masthead-rule"></div>
+  </header>
 
-  &lt;h1&gt;The Daily Market Brief&lt;/h1&gt;
-  &lt;div class=&quot;dateline&quot;&gt;Wednesday, April 29, 2026 &amp;nbsp;|&amp;nbsp; Evening Edition&lt;/div&gt;
-
-  &lt;!-- TABLE OF CONTENTS --&gt;
-  &lt;div class=&quot;toc&quot;&gt;
-    &lt;p&gt;Contents&lt;/p&gt;
-    &lt;ol&gt;
-      &lt;li&gt;&lt;a href=&quot;#s1&quot;&gt;Smart in 30 Seconds&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#s2&quot;&gt;What Moved Markets Today&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#s3&quot;&gt;Why It Mattered&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#s4&quot;&gt;The Chain Reaction&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#s5&quot;&gt;What It Means&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#s6&quot;&gt;Market Sector Lens&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#s7&quot;&gt;Finance Career Lens&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#s8&quot;&gt;Why This Matters for Interviews This Week&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#s9&quot;&gt;Term of the Day&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#s10&quot;&gt;Say This Today&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#s11&quot;&gt;What Changed Since This Morning&lt;/a&gt;&lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/div&gt;
-
-  &lt;!-- ===================== SECTION 1 ===================== --&gt;
-  &lt;h2 id=&quot;s1&quot;&gt;1. Smart in 30 Seconds&lt;/h2&gt;
-  &lt;ul&gt;
-    &lt;li&gt;&lt;strong&gt;Fed holds again.&lt;/strong&gt; Rates stay at 3.5%–3.75% for the third straight meeting — but the vote was a dramatic 8–4, the most dissents since October 1992.&lt;/li&gt;
-    &lt;li&gt;&lt;strong&gt;Powell is done as Chair, but not leaving.&lt;/strong&gt; His chairmanship ends May 15. He announced he&#39;ll stay on the Board of Governors to protect Fed independence.&lt;/li&gt;
-    &lt;li&gt;&lt;strong&gt;Four Mag 7 giants reported after the close.&lt;/strong&gt; Microsoft crushed expectations; Meta got hit on ballooning capex. Alphabet climbed on solid sales. Results are shaping Thursday&#39;s open.&lt;/li&gt;
-    &lt;li&gt;&lt;strong&gt;Oil keeps climbing.&lt;/strong&gt; Brent hit its highest level since 2022 as Trump confirmed the Iran blockade will be extended — indefinitely.&lt;/li&gt;
-    &lt;li&gt;&lt;strong&gt;Rate cuts are now a 2027 story.&lt;/strong&gt; Money markets have nearly priced out any cut in 2026 and are starting to price in a possible hike in 2027.&lt;/li&gt;
-  &lt;/ul&gt;
-
-  &lt;!-- ===================== SECTION 2 ===================== --&gt;
-  &lt;h2 id=&quot;s2&quot;&gt;2. What Moved Markets Today&lt;/h2&gt;
-
-  &lt;div class=&quot;snapshot-grid&quot;&gt;
-    &lt;div class=&quot;snap-item&quot;&gt;
-      &lt;div class=&quot;label&quot;&gt;S&amp;amp;P 500&lt;/div&gt;
-      &lt;div class=&quot;value&quot;&gt;7,135.95&lt;/div&gt;
-      &lt;div class=&quot;change down&quot;&gt;▼ 0.04%&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;snap-item&quot;&gt;
-      &lt;div class=&quot;label&quot;&gt;Dow Jones&lt;/div&gt;
-      &lt;div class=&quot;value&quot;&gt;48,861.81&lt;/div&gt;
-      &lt;div class=&quot;change down&quot;&gt;▼ 0.57% — 5th straight down day&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;snap-item&quot;&gt;
-      &lt;div class=&quot;label&quot;&gt;Nasdaq&lt;/div&gt;
-      &lt;div class=&quot;value&quot;&gt;24,673.24&lt;/div&gt;
-      &lt;div class=&quot;change up&quot;&gt;▲ 0.04%&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;snap-item&quot;&gt;
-      &lt;div class=&quot;label&quot;&gt;10-Yr Treasury&lt;/div&gt;
-      &lt;div class=&quot;value&quot;&gt;4.41%&lt;/div&gt;
-      &lt;div class=&quot;change down&quot;&gt;▲ ~5 bps — one-month high&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;snap-item&quot;&gt;
-      &lt;div class=&quot;label&quot;&gt;2-Yr Treasury&lt;/div&gt;
-      &lt;div class=&quot;value&quot;&gt;3.937%&lt;/div&gt;
-      &lt;div class=&quot;change down&quot;&gt;▲ 9.3 bps — two-year high&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;snap-item&quot;&gt;
-      &lt;div class=&quot;label&quot;&gt;Brent Crude&lt;/div&gt;
-      &lt;div class=&quot;value&quot;&gt;~$116–117&lt;/div&gt;
-      &lt;div class=&quot;change down&quot;&gt;▲ ~5% — highest since 2022&lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-
-  &lt;p&gt;&lt;strong&gt;Top movers:&lt;/strong&gt;&lt;/p&gt;
-  &lt;ul&gt;
-    &lt;li&gt;&lt;strong&gt;NXP Semiconductors (NXPI) +26%&lt;/strong&gt; — Best single-day gain since its 2010 IPO on a strong Q1 beat.&lt;/li&gt;
-    &lt;li&gt;&lt;strong&gt;Seagate Technology (STX) +17%&lt;/strong&gt; — Strong Q3 results.&lt;/li&gt;
-    &lt;li&gt;&lt;strong&gt;Starbucks (SBUX) +8.4%&lt;/strong&gt; — CEO declared the turnaround has hit an &quot;inflection point.&quot;&lt;/li&gt;
-    &lt;li&gt;&lt;strong&gt;Visa (V) +10%&lt;/strong&gt; — Beat estimates; CEO cited resilient consumer spending.&lt;/li&gt;
-    &lt;li&gt;&lt;strong&gt;Robinhood (HOOD) −10%&lt;/strong&gt; — Missed Q1 expectations; crypto trading fees down 47%.&lt;/li&gt;
-    &lt;li&gt;&lt;strong&gt;SoFi (SOFI) −13%&lt;/strong&gt; — Beat revenue but flat 2026 full-year guidance disappointed.&lt;/li&gt;
-    &lt;li&gt;&lt;strong&gt;Meta (META) −6% after hours&lt;/strong&gt; — Raised 2026 capex to $125B–$145B; user growth slowed.&lt;/li&gt;
-    &lt;li&gt;&lt;strong&gt;Microsoft (MSFT) — after hours beat&lt;/strong&gt; — Azure +40%, earnings and revenue above consensus.&lt;/li&gt;
-    &lt;li&gt;&lt;strong&gt;Alphabet (GOOGL) — after hours climb&lt;/strong&gt; — Solid ad sales and cloud growth.&lt;/li&gt;
-  &lt;/ul&gt;
-
-  &lt;!-- ===================== SECTION 3 ===================== --&gt;
-  &lt;h2 id=&quot;s3&quot;&gt;3. Why It Mattered&lt;/h2&gt;
-
-  &lt;p&gt;Today was arguably the most consequential single day of the year for financial markets. Three major forces converged at once: the Fed&#39;s final meeting under Powell, four simultaneous Mag 7 earnings reports, and a geopolitical oil shock with no clear end date.&lt;/p&gt;
-
-  &lt;p&gt;&lt;strong&gt;The Fed wasn&#39;t boring.&lt;/strong&gt; 
-
-The Federal Reserve left interest rates steady in what was almost certainly Jerome Powell&#39;s final meeting as its leader, but there were the most internal dissents at a Fed meeting in 34 years.
-
- The hold itself was fully expected — 
-
-the FOMC voted to hold the benchmark funds rate in a range between 3.5% and 3.75%, and markets had been pricing in a 100% chance of no change.
-
- What nobody expected was the split. 
-
-Three reserve bank presidents — Beth Hammack (Cleveland), Neel Kashkari (Minneapolis), and Lorie Logan (Dallas) — dissented not against the rate decision, but because they &quot;did not support inclusion of an easing bias in the statement at this time.&quot;
-
- A fourth dissenter, 
-
-Fed Governor Stephen Miran, called for a quarter percentage point cut.
-
- Hawks and doves pulling in opposite directions simultaneously — that&#39;s a genuinely unusual signal.&lt;/p&gt;
-
-  &lt;p&gt;&lt;strong&gt;Powell isn&#39;t going anywhere yet.&lt;/strong&gt; 
-
-Federal Reserve Chair Jerome Powell said he will stay on the Board of Governors for an indefinite period while a probe into the renovation of the central bank&#39;s headquarters continues.
-
- 
-
-By remaining as a governor, he can continue to influence the board as a member — and he also denies Trump an opening to appoint another member to the board.
-
-&lt;/p&gt;
-
-  &lt;p&gt;&lt;strong&gt;Oil is the macro pressure point.&lt;/strong&gt; 
-
-Oil prices rose for another day after the Wall Street Journal, citing U.S. officials, reported that President Trump has told aides to prepare for an extended blockade of Iran. Prices then took another leg higher after Axios reported that Trump rejected Iran&#39;s proposal to reopen the Strait of Hormuz.
-
- 
-
-Brent prices are nearing their wartime peak of just above $119 a barrel and remain far above the roughly $70 level seen before the conflict began.
-
-&lt;/p&gt;
-
-  &lt;!-- ===================== SECTION 4 ===================== --&gt;
-  &lt;h2 id=&quot;s4&quot;&gt;4. The Chain Reaction&lt;/h2&gt;
-
-  &lt;p&gt;Here&#39;s how the pieces connect:&lt;/p&gt;
-
-  &lt;p&gt;&lt;strong&gt;Iran blockade → oil spike → inflation pressure → Fed can&#39;t cut.&lt;/strong&gt; 
-
-The ongoing conflict between the U.S., Israel, and Iran has caused oil prices to spike to their highest level in four years and gas prices to soar above $4.00 per gallon, putting a quick halt to the decelerating inflation trend seen in recent years.
-
- 
-
-Core inflation is running at 3.2% — &quot;moving, albeit just a little bit, in the wrong direction&quot; — and there&#39;s still uncertain headline inflation coming out of the Gulf, as Powell himself noted.
-
-&lt;/p&gt;
-
-  &lt;p&gt;&lt;strong&gt;Fed stays on hold → yields rise → pressure on rate-sensitive assets.&lt;/strong&gt; 
-
-The 10-year U.S. Treasury yield jumped after the Fed&#39;s decision, climbing more than 5 basis points to 4.41%.
-
- 
-
-The 2-year Treasury surged 9.3 basis points to 3.937%, its highest point in two years.
-
- Rising short-end yields reflect markets repricing the timeline for cuts much further out.&lt;/p&gt;
-
-  &lt;p&gt;&lt;strong&gt;Rate cut hopes collapse → money markets reprice.&lt;/strong&gt; 
-
-With no end in sight to the Middle East conflict, money markets all but abandoned wagers on a rate cut this year and began pricing in the chances of a hike in 2027.
-
- This is a significant shift from just a few months ago.&lt;/p&gt;
-
-  &lt;p&gt;&lt;strong&gt;Mag 7 earnings → mixed picture on AI spending payoff.&lt;/strong&gt; The four hyperscalers collectively committed to what could be 
-
-roughly $600 billion in AI capex in 2026.
-
- 
-
-Microsoft reported better-than-expected results and raised its full-year capex forecast to $190 billion, with earnings per share of $4.27 adjusted vs. $4.06 expected and revenue of $82.89 billion vs. $81.39 billion expected.
-
- 
-
-Azure revenue surged 40%
-
- — accelerating past guidance. Meanwhile, 
-
-Meta tumbled more than 6% in extended trading after raising its capex plans to $125B–$145B; the Facebook parent reported user growth fell from Q4, blaming the war in Iran and WhatsApp restrictions in Russia.
-
-&lt;/p&gt;
-
-  &lt;!-- ===================== SECTION 5 ===================== --&gt;
-  &lt;h2 id=&quot;s5&quot;&gt;5. What It Means&lt;/h2&gt;
-
-  &lt;div class=&quot;card&quot;&gt;
-    &lt;div class=&quot;card-label&quot;&gt;Confirmed&lt;/div&gt;
-    &lt;p style=&quot;margin:0;&quot;&gt;The Fed is on hold — for at least several more meetings. Three hawkish dissenters want to drop the easing bias entirely, suggesting the next policy shift could be a hike before a cut if oil and inflation remain elevated. Rate cuts in 2026 are no longer the base case.&lt;/p&gt;
-  &lt;/div&gt;
-
-  &lt;div class=&quot;card&quot;&gt;
-    &lt;div class=&quot;card-label&quot;&gt;Confirmed&lt;/div&gt;
-    &lt;p style=&quot;margin:0;&quot;&gt;Powell will remain on the Fed Board post-May 15. This matters: 
-
-the addition of Kevin Warsh to the FOMC will not swing the balance between doves and hawks, as Warsh will take Stephen Miran&#39;s seat given Powell&#39;s seat will not be open for the time being.
-
-&lt;/p&gt;
-  &lt;/div&gt;
-
-  &lt;div class=&quot;card&quot;&gt;
-    &lt;div class=&quot;card-label&quot;&gt;Confirmed&lt;/div&gt;
-    &lt;p style=&quot;margin:0;&quot;&gt;
-
-The surprising dissents show that Kevin Warsh, whose confirmation to lead the Fed is pending in the Senate, will face significant internal resistance to delivering the interest rate cuts that President Trump desires.
-
-&lt;/p&gt;
-  &lt;/div&gt;
-
-  &lt;div class=&quot;card&quot;&gt;</pre>
-</body>
-</html>
+  <!-- ALERT STRIP -->
+  <div class="alert-strip">
+    <span class="hi">⬆ MARKETS HIGHER</span> &nbsp;·&nbsp; Q1 GDP 2.0% — below 2.3% est &nbsp;·&nbsp; Core PCE 3.2% Y/Y &
